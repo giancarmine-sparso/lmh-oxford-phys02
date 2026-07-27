@@ -1,0 +1,422 @@
+# =============================================================================
+# Sistema operativo e file manager
+# =============================================================================
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.AppleDouble
+.LSOverride
+.Spotlight-V100/
+.Trashes/
+.DocumentRevisions-V100/
+.fseventsd/
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.stackdump
+
+# Linux / Unix
+*~
+.directory
+.Trash-*
+.fuse_hidden*
+.nfs*
+
+# =============================================================================
+# Editor e IDE
+# =============================================================================
+
+# Visual Studio Code: conserva le configurazioni condivisibili
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/*.code-snippets
+
+# JetBrains
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Vim / Neovim
+*.swp
+*.swo
+*.swn
+Session.vim
+.netrwhist
+
+# Emacs
+\#*\#
+.#*
+auto-save-list/
+tramp
+
+# Altri editor
+.fleet/
+.zed/
+*.sublime-workspace
+*.kate-swp
+
+# Stato locale degli agenti di sviluppo
+.agents/
+.codex/
+
+# =============================================================================
+# Segreti e configurazioni locali
+# =============================================================================
+
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+!.env.test.example
+.envrc.local
+.direnv/
+.secrets/
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+
+# =============================================================================
+# Log, processi, crash dump e file temporanei
+# =============================================================================
+
+logs/
+*.log
+*.log.*
+*.pid
+*.pid.lock
+*.seed
+*.tmp
+*.temp
+*.bak
+*.old
+*.orig
+*.rej
+*.crash
+core
+core.*
+
+tmp/
+temp/
+.tmp/
+.temp/
+.cache/
+
+# =============================================================================
+# JavaScript / TypeScript / frontend
+# =============================================================================
+
+# Dipendenze e cache dei package manager
+node_modules/
+bower_components/
+jspm_packages/
+web_modules/
+.npm/
+.pnpm-store/
+.bun/
+.pnp.*
+
+# Yarn Berry: conserva solo i file utili al progetto/zero-install
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Log dei package manager
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Build, cache e metadati dei bundler/framework
+dist/
+build/
+out/
+.output/
+.vite/
+.parcel-cache/
+.turbo/
+.nx/
+.angular/
+.next/
+.nuxt/
+.svelte-kit/
+.astro/
+.docusaurus/
+.vitepress/cache/
+.vitepress/dist/
+storybook-static/
+*.tsbuildinfo
+*.tsbuildinfo.*
+*.eslintcache
+*.stylelintcache
+*.map
+
+# Test e coverage
+coverage/
+.nyc_output/
+playwright-report/
+blob-report/
+test-results/
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+
+# Stato locale dei provider di deploy
+.vercel/
+.netlify/
+.firebase/
+.serverless/
+.wrangler/
+
+# =============================================================================
+# Python
+# =============================================================================
+
+# Bytecode e cache
+__pycache__/
+*.py[cod]
+*$py.class
+.python_history
+
+# Ambienti virtuali
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+__pypackages__/
+
+# Packaging e build
+*.egg
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+wheels/
+share/python-wheels/
+MANIFEST
+*.whl
+.installed.cfg
+
+# Test, coverage, type checking e lint
+.pytest_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+*.cover
+*.py,cover
+.hypothesis/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+.ruff_cache/
+.pyright/
+
+# Notebook e strumenti scientifici
+.ipynb_checkpoints/
+.jupyter_cache/
+.matplotlib/
+cython_debug/
+
+# Profiler e debugger
+*.prof
+*.lprof
+.pdb_history
+
+# =============================================================================
+# Manim
+# =============================================================================
+
+/talk/manim/media/
+/talk/manim/.manim/
+/talk/manim/.manim_cache/
+partial_movie_files/
+
+# =============================================================================
+# LaTeX / BibLaTeX / LuaLaTeX
+# =============================================================================
+
+# File ausiliari principali
+*.aux
+*.auxlock
+*.lof
+*.lot
+*.toc
+*.out
+*.fls
+*.fdb_latexmk
+*.fmt
+*.fot
+*.cb
+*.cb2
+.*.lb
+
+# Output intermedi dei motori TeX
+*.dvi
+*.xdv
+*-converted-to.*
+*.synctex
+*.synctex.gz
+*.synctex(busy)
+*.synctex.gz(busy)
+*.pdfsync
+
+# Bibliografia
+*.bbl
+*.bcf
+*.blg
+*-blx.aux
+*-blx.bib
+*.run.xml
+*.bib.bak
+*.bib.sav
+
+# Indici, glossari, acronimi e nomenclature
+*.idx
+*.ilg
+*.ind
+*.ist
+*.xdy
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.glsdefs
+*.nlg
+*.nlo
+*.nls
+
+# Liste e ambienti numerati
+*.loa
+*.lol
+*.thm
+*.brf
+*.loe
+*.lox
+
+# Beamer
+*.nav
+*.pre
+*.snm
+*.vrb
+
+# minitoc / memoir / titletoc
+*.maf
+*.mlf
+*.mlt
+*.mtc
+*.mtc[0-9]*
+*.slf
+*.slt
+*.stc
+*.stc[0-9]*
+*.ptc
+
+# minted / PythonTeX / SageTeX / SymPyTeX
+_minted*/
+*.pyg
+*.pytxcode
+pythontex-files-*/
+*.sagetex.sage
+*.sagetex.py
+*.sagetex.scmd
+*.sagetex.sout
+*.sympy
+sympy-plots-for-*.tex/
+
+# TikZ / PGF e conversioni grafiche generate
+*.dpth
+*.md5
+*-eps-converted-to.pdf
+
+# TeX4ht e altri convertitori
+*.4ct
+*.4tc
+*.idv
+*.lg
+*.trc
+*.xref
+*.xmpi
+
+# Strumenti e editor TeX
+*.tps
+*.texpadtmp
+*.lyx~
+.arara/
+*.rubbercache
+**/auto/*.el
+
+# PDF compilati noti. Non ignorare tutti i PDF: paper e figure possono essere input.
+/talk/notes/*.pdf
+/poster/main.pdf
+/poster/poster.pdf
+
+# =============================================================================
+# Artefatti compilati nativi e generici
+# =============================================================================
+
+*.o
+*.obj
+*.lo
+*.la
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+*.dll
+*.exe
+*.out.exe
+*.class
+*.jar
+*.war
+*.ear
+*.dSYM/
+
+# CMake / Meson / Ninja / Make
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+CTestTestfile.cmake
+Testing/
+meson-private/
+meson-logs/
+.ninja_deps
+.ninja_log
+*.ninja
+
+# Nix
+result
+result-*
