@@ -1,0 +1,30 @@
+project:
+  type: default
+  output-dir: _site
+  resources:
+    - assets/**
+
+lang: it
+
+format:
+  revealjs:
+    width: 1600
+    height: 900
+    margin: 0.025
+    center: false
+    transition: none
+    background-transition: none
+    navigation-mode: linear
+    controls: true
+    controls-layout: edges
+    controls-back-arrows: faded
+    progress: false
+    slide-number: false
+    hash: true
+    history: false
+    auto-stretch: false
+    embed-resources: true
+    html-math-method: plain
+    css: styles.css
+    include-in-header: header.html
+    include-after-body: after-body.html

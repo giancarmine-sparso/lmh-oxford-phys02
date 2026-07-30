@@ -165,7 +165,7 @@
 
 % --- Theory boxes ---
 \usepackage[most]{tcolorbox}
-\usetikzlibrary{arrows.meta,angles,quotes}
+\usetikzlibrary{arrows.meta,angles,quotes,calc,decorations.markings}
 
 \tcbset{
   enhanced,
@@ -351,9 +351,9 @@
 \makenotesheader
 
 \begingroup
-  \let\clearpage\relax
-  \let\cleardoublepage\relax
-  \tableofcontents
+\let\clearpage\relax
+\let\cleardoublepage\relax
+\tableofcontents
 \endgroup
 \thispagestyle{empty}
 

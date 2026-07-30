@@ -1,0 +1,72 @@
+% Aharonov--Bohm experiment (1959), Fig. 1: time-dependent scalar potential.
+% TikZ fragment intended to be included from main.tex.
+\begin{tikzpicture}[
+		line cap=round, line join=round,
+		beam/.style={line width=0.6pt,
+				postaction={decorate},
+				decoration={markings,
+						mark=at position 0.5 with {\arrow[line width=0.6pt]{Stealth[length=2.2mm]}}}},
+		lbl/.style={font=\itshape\small},
+		sub/.style={font=\itshape\footnotesize}]
+
+	% ---- vertici dell'esagono (come nell'originale) ----
+	\coordinate (A) at (0,0);
+	\coordinate (B) at (1.7,1.25);
+	\coordinate (D) at (5.9,1.25);
+	\coordinate (C) at (1.7,-1.25);
+	\coordinate (E) at (5.9,-1.25);
+	\coordinate (F) at (7.6,0);
+
+	% ---- fascio incidente ----
+	\draw[beam] (-2.8,0) -- (A);
+	\node[lbl, align=center] at (-1.65,0.42) {orbit of\\[-2pt] electron beam};
+
+	% ---- cammini ----
+	\draw[beam] (A) -- (B);
+	\draw[line width=0.6pt] (B) -- (D);
+	\draw[beam] (D) -- ($(D)!1.13!(F)$);   % prolunga oltre F: incrocio a X
+	\draw[beam] (A) -- (C);
+	\draw[line width=0.6pt] (C) -- (E);
+	\draw[beam] (E) -- ($(E)!1.13!(F)$);
+
+	% ---- etichette dei vertici ----
+	\node[lbl, above left=-2pt]  at (B) {B};
+	\node[lbl, above right=-2pt] at (D) {D};
+	\node[lbl, below left=-2pt]  at (C) {C};
+	\node[lbl, below right=-2pt] at (E) {E};
+	\node[lbl, below left=-1pt]  at (A) {A};
+	\node[lbl] at ($(F)+(0.32,0.34)$) {F};
+
+	% ---- regioni ----
+	\node[lbl] at (0.95,0.12)  {reg.\;I};
+	\node[lbl] at (6.45,0)     {reg.\;III};
+
+	% ================= tubo metallico (macro disegnata due volte) =============
+	% \tubo{centro y}{M-label}{W-label}
+	\newcommand{\tubo}[3]{%
+		\begin{scope}[shift={(3.8,#1)}]
+			% corpo del cilindro con tratteggio "metallo"
+			\draw[line width=0.7pt] (-1.55,0.28) -- (1.55,0.28);
+			\draw[line width=0.7pt] (-1.55,-0.28) -- (1.55,-0.28);
+			% estremità: ellisse piena a destra, arco a sinistra (tubo aperto)
+			\draw[line width=0.7pt] (1.55,0) ellipse (0.13 and 0.28);
+			\draw[line width=0.7pt] (-1.55,0.28) arc (90:270:0.13 and 0.28);
+			\draw[line width=0.45pt, dashed] (-1.55,0.28) arc (90:-90:0.13 and 0.28);
+			% tratteggio leggero sul mantello (aspetto inciso, vecchia scuola)
+			\foreach \x in {-1.35,-1.05,...,1.4}
+			\draw[line width=0.25pt] (\x,0.28) -- (\x+0.14,0.14);
+			\foreach \x in {-1.35,-1.05,...,1.4}
+			\draw[line width=0.25pt] (\x,-0.14) -- (\x+0.14,-0.28);
+			% pacchetto d'onda dentro il tubo
+			\draw[line width=0.45pt, domain=-0.62:0.62, samples=120, smooth, variable=\x]
+			plot ({\x},{0.16*exp(-6*\x*\x)*sin(1100*\x)});
+			% etichette
+			\node[sub] at (-0.65,0.52) {$W_{#3}$};
+			\node[sub] at (0.75,0.52)  {$M_{#2}$};
+			\node[lbl, font=\itshape\scriptsize] at (0,-0.48) {reg.\;II};
+		\end{scope}}
+
+	\tubo{1.25}{1}{1}
+	\tubo{-1.25}{2}{2}
+
+\end{tikzpicture}

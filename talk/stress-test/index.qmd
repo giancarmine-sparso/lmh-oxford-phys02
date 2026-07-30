@@ -1,0 +1,178 @@
+---
+pagetitle: "Stress test Quarto"
+---
+
+## Stress test Quarto {#stage-start .stress-slide data-stress-stage="start"}
+
+```{=html}
+<div class="start-shell">
+  <div class="eyebrow">DIAGNOSTICA OFFLINE · CHROMIUM</div>
+  <h1>Quanto margine ha questo PC?</h1>
+  <p class="lede">Un test progressivo di rendering, animazioni HTML, video, GPU e CPU. Nessuna spiegazione: solo carico misurabile.</p>
+
+  <div class="profile-grid">
+    <button class="profile-card" type="button" data-start-profile="quick">
+      <span class="profile-time">03:00</span>
+      <strong>Test rapido</strong>
+      <small>Compatibilità e fluidità</small>
+    </button>
+    <button class="profile-card profile-card-primary" type="button" data-start-profile="full">
+      <span class="profile-time">15:00</span>
+      <strong>Test completo</strong>
+      <small>Margine e carico sostenuto</small>
+    </button>
+  </div>
+
+  <label class="fullscreen-choice">
+    <input id="fullscreen-choice" type="checkbox" checked>
+    Avvia a schermo intero
+  </label>
+
+  <div class="safety-note"><kbd>X</kbd> arresto immediato · uscita automatica sotto 15 FPS</div>
+</div>
+```
+
+## Calibrazione {#stage-calibration .stress-slide data-stress-stage="calibration"}
+
+```{=html}
+<div class="stage-frame">
+  <div class="stage-heading">
+    <span class="stage-number">01</span>
+    <div><p>BASELINE</p><h2>Calibrazione display</h2></div>
+  </div>
+  <div class="workload-mount calibration-mount" aria-label="Animazione di calibrazione"></div>
+  <p class="stage-caption">Misura del refresh reale e del costo minimo di Reveal.js.</p>
+</div>
+```
+
+## DOM e compositing {#stage-dom .stress-slide data-stress-stage="dom"}
+
+```{=html}
+<div class="stage-frame">
+  <div class="stage-heading">
+    <span class="stage-number">02</span>
+    <div><p>LAYOUT · CSS</p><h2>DOM e compositing</h2></div>
+  </div>
+  <div class="workload-mount full-bleed-mount" aria-label="Elementi DOM animati"></div>
+  <p class="stage-caption">Il numero di elementi cresce finché il rendering resta stabile.</p>
+</div>
+```
+
+## Canvas sintetico {#stage-canvas .stress-slide data-stress-stage="canvas"}
+
+```{=html}
+<div class="stage-frame">
+  <div class="stage-heading">
+    <span class="stage-number">03</span>
+    <div><p>CANVAS 2D</p><h2>Particelle progressive</h2></div>
+  </div>
+  <div class="workload-mount full-bleed-mount" aria-label="Canvas con particelle"></div>
+  <p class="stage-caption">Da 20.000 a 80.000 particelle con alpha blending.</p>
+</div>
+```
+
+## Animazione HTML ×1 {#stage-ab-single .stress-slide data-stress-stage="ab-single"}
+
+```{=html}
+<div class="stage-frame">
+  <div class="stage-heading">
+    <span class="stage-number">04</span>
+    <div><p>CARICO REALE</p><h2>Animazione HTML ×1</h2></div>
+  </div>
+  <div class="workload-mount ab-single-mount" aria-label="Animazione HTML della repository"></div>
+  <p class="stage-caption">La versione completa della repository, isolata in un iframe.</p>
+</div>
+```
+
+## Carico rappresentativo {#stage-representative .stress-slide data-stress-stage="representative"}
+
+```{=html}
+<div class="stage-frame">
+  <div class="stage-heading">
+    <span class="stage-number">05</span>
+    <div><p>SCENARIO TALK</p><h2>HTML + video 1080p</h2></div>
+  </div>
+  <div class="workload-mount representative-mount" aria-label="Animazione HTML e video"></div>
+  <p class="stage-caption">Questo stadio determina il verdetto principale di idoneità.</p>
+</div>
+```
+
+## Animazione HTML ×4 {#stage-ab-multi .stress-slide data-stress-stage="ab-multi"}
+
+```{=html}
+<div class="stage-frame">
+  <div class="stage-heading">
+    <span class="stage-number">06</span>
+    <div><p>CANVAS 2D · MARGINE</p><h2>Animazione HTML ×4</h2></div>
+  </div>
+  <div class="workload-mount ab-multi-mount" aria-label="Quattro animazioni HTML simultanee"></div>
+  <p class="stage-caption">Quattro viewport interne 1000 × 560, scalate solo visivamente.</p>
+</div>
+```
+
+## GPU {#stage-gpu .stress-slide data-stress-stage="gpu"}
+
+```{=html}
+<div class="stage-frame">
+  <div class="stage-heading">
+    <span class="stage-number">07</span>
+    <div><p>WEBGL</p><h2>Shader progressivo</h2></div>
+  </div>
+  <div class="workload-mount full-bleed-mount" aria-label="Shader WebGL"></div>
+  <p class="stage-caption">La complessità sale progressivamente e si ferma sotto 30 FPS.</p>
+</div>
+```
+
+## CPU {#stage-cpu .stress-slide data-stress-stage="cpu"}
+
+```{=html}
+<div class="stage-frame">
+  <div class="stage-heading">
+    <span class="stage-number">08</span>
+    <div><p>WORKER · MAIN THREAD</p><h2>Carico CPU progressivo</h2></div>
+  </div>
+  <div class="workload-mount cpu-mount" aria-label="Carico CPU"></div>
+  <p class="stage-caption">I worker aumentano lasciando almeno due thread logici liberi.</p>
+</div>
+```
+
+## Picco e soak {#stage-soak .stress-slide data-stress-stage="soak"}
+
+```{=html}
+<div class="stage-frame">
+  <div class="stage-heading">
+    <span class="stage-number">09</span>
+    <div><p>CARICO MISTO</p><h2>Picco e stabilità termica</h2></div>
+  </div>
+  <div class="workload-mount soak-mount" aria-label="Carico misto sostenuto"></div>
+  <p class="stage-caption">HTML, video, WebGL e CPU al 75% degli ultimi livelli stabili.</p>
+</div>
+```
+
+## Risultati {#stage-results .stress-slide data-stress-stage="results"}
+
+```{=html}
+<div class="results-shell">
+  <div id="result-verdict" class="result-verdict" aria-live="polite">
+    <span class="verdict-label">RAPPORTO</span>
+    <strong>In attesa di un test</strong>
+    <small>Avvia un profilo dalla prima slide.</small>
+  </div>
+
+  <div id="environment-summary" class="environment-summary"></div>
+
+  <div class="result-table-wrap">
+    <table class="result-table">
+      <thead><tr><th>Stadio</th><th>FPS</th><th>p95</th><th>Frame persi</th><th>Stato</th></tr></thead>
+      <tbody id="result-table-body"><tr><td colspan="5">Nessun dato disponibile</td></tr></tbody>
+    </table>
+  </div>
+
+  <div class="result-actions">
+    <button type="button" data-export="json" disabled>Scarica JSON</button>
+    <button type="button" data-export="csv" disabled>Scarica CSV</button>
+    <button type="button" data-start-profile="quick">Ripeti 3 min</button>
+    <button type="button" data-start-profile="full">Ripeti 15 min</button>
+  </div>
+</div>
+```

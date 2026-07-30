@@ -420,3 +420,6 @@ meson-logs/
 # Nix
 result
 result-*
+
+/talk/.quarto/
+/talk/dist/
