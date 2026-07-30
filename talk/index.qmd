@@ -1,0 +1,362 @@
+---
+title: "The Aharonov–Bohm Effect"
+subtitle: "When electromagnetic potentials become physically significant"
+author: "Giancarmine Sparso"
+institute: "LMH Oxford Summer Programme 2026 · PHYS02"
+---
+
+
+## How do we observe a field?
+
+![](assets/figures/Bar-magnet-iron-filings_max.jpg){
+  width="100%"
+  fig-alt="Iron filings revealing the magnetic field around a bar magnet"
+}
+
+
+## From forces to potentials
+
+A force is **conservative** when its effect can be encoded in a scalar function:
+
+$$
+\mathbf F = - \nabla U
+$$
+
+Here \(U\) is the **potential energy** of the probe.
+
+But \(U\) depends on the probe itself.
+For gravity near Earth:
+
+$$
+U(y)=mgy
+$$
+
+So we separate the field from the probe:
+
+$$
+\phi(\mathbf r)=\frac{U(\mathbf r)}{m}
+\qquad \Rightarrow \qquad
+\mathbf g = -\nabla \phi
+$$
+
+::: {.fragment}
+**Potential:** field information, independent of the test body.
+:::
+
+
+## Only potential differences matter {.potential-shift-slide background-color="#070D17"}
+
+:::: {.r-stack .potential-stack}
+
+::: {.potential-copy .fragment .fade-out data-fragment-index="1"}
+
+The gravitational field depends on the **slope** of the potential,
+not on its absolute height.
+
+$$
+\mathbf g(\mathbf r)=-\nabla\Phi(\mathbf r)
+$$
+
+$$
+\Phi'(\mathbf r)=\Phi(\mathbf r)+\class{potential-accent}{C}
+\quad\Longrightarrow\quad
+\mathbf g'=-\nabla(\Phi+\class{potential-accent}{C})=\mathbf g
+$$
+
+<div class="takeaway">
+A constant shift changes the reference level, not the physics.
+</div>
+
+:::
+
+::: {.potential-video .fragment data-fragment-index="1"}
+
+```{=html}
+<video controls preload="auto" data-autoplay>
+  <source src="manim/media/videos/constant_shift/720p30/ConstantShiftScene.mp4" type="video/mp4">
+</video>
+```
+
+:::
+
+::::
+
+
+
+## Different potentials can produce the same field
+
+<div class="slide-intro">
+In gravity, adding a constant to the potential does not change the physical field.
+</div>
+
+:::: {.columns .v-center}
+::: {.column width="48%"}
+
+<div class="formula-label">Potential shift</div>
+
+$$
+V' = V + C
+$$
+
+$$
+\mathbf g = -\nabla V
+$$
+
+:::
+
+::: {.column width="48%"}
+
+<div class="formula-label">Field unchanged</div>
+
+$$
+\mathbf g' = -\nabla V'
+$$
+
+$$
+= -\nabla (V + C) = \mathbf g
+$$
+
+:::
+::::
+
+<div class="takeaway">
+Only differences in potential affect the field.
+</div>
+
+## Electromagnetism: more freedom, same fields {.em-gauge-slide}
+
+<div class="em-intro" style="font-size: 1em;">
+
+Electromagnetism needs **two potentials**:
+$V$, the electric scalar potential, and
+$\mathbf A$, the magnetic vector potential.
+
+</div>
+
+$$
+\mathbf E
+=
+-\nabla V
+-
+\frac{\partial\mathbf A}{\partial t},
+\qquad
+\mathbf B
+=
+\nabla\times\mathbf A
+$$
+
+<div class="change-label" style="font-size: 1em;">
+
+Now change the two potentials together:
+
+</div>
+
+$$
+\mathbf A'
+=
+\mathbf A+\nabla\chi,
+\qquad
+V'
+=
+V-\frac{\partial\chi}{\partial t}
+$$
+
+<div class="chi-note" style="font-size: 1em;">
+
+$\chi(\mathbf r,t)$ may be any scalar function.
+
+</div>
+
+::: {.same-fields .fragment data-fragment-index="1" style="font-size: 1em;"}
+$$
+\mathbf E'=\mathbf E,
+\qquad
+\mathbf B'=\mathbf B
+$$
+:::
+
+::: {.gauge-definition .fragment data-fragment-index="2" style="font-size: 1em;"}
+<span class="gauge-term">Gauge freedom</span> is the freedom to use
+different potentials to describe exactly the same physical fields.
+:::
+
+## Quantum mechanics uses the potentials directly {.schrodinger-potentials}
+
+The wavefunction evolves according to Schrödinger's equation:
+
+$$
+i\hbar\frac{\partial \psi}{\partial t}
+=
+\hat H\psi
+$$
+
+::: {.qm-particle-equation}
+For a charged particle in an electromagnetic field:
+
+$$
+i\hbar\frac{\partial\psi}{\partial t}
+=
+\left[
+\frac{1}{2m}
+\left(
+-i\hbar\nabla
+-
+q\color{#f2c94c}{\mathbf A}
+\right)^2
++
+q\color{#f2c94c}{V}
+\right]\psi
+$$
+:::
+
+::: {.qm-takeaway}
+The equation contains the potentials $V$ and $\mathbf A$ directly.
+:::
+
+
+## Aharonov’s intuition {.ab-intuition-slide}
+
+<div class="phase-one-liner">
+The absolute phase of a wavefunction is not directly measurable — but phase differences are.
+</div>
+
+<div class="intuition-layout">
+
+<div class="intuition-text">
+
+<div class="intuition-kicker">The uncomfortable point</div>
+
+In the Schrödinger equation, the particle does not couple directly to
+$\mathbf E$ and $\mathbf B$, but to the potentials:
+
+$$
+\hat H =
+\frac{1}{2m}
+\left(-i\hbar\nabla - q\mathbf A\right)^2
++ qV
+$$
+
+<div>
+
+Replacing potentials with fields means differentiating:
+
+$$
+\mathbf B = \nabla \times \mathbf A
+$$
+
+and differentiation can erase information.
+
+</div>
+
+<div class="fragment fade-up intuition-question">
+Can a quantum phase detect information that the fields have lost?
+</div>
+
+</div>
+
+<div class="scientists-mini">
+
+<figure>
+<img src="assets/images/yakir-aharonov.jpg" alt="Yakir Aharonov">
+<figcaption>Yakir Aharonov</figcaption>
+</figure>
+
+<figure>
+<img src="assets/images/david-bohm.jpg" alt="David Bohm">
+<figcaption>David Bohm</figcaption>
+</figure>
+
+</div>
+
+</div>
+
+---
+
+## The magnetic Aharonov–Bohm setup {.ab-setup-slide}
+
+:::: {.setup-layout}
+::: {.setup-visual}
+<img
+  class="setup-figure"
+  src="assets/figures/ab-solenoid.svg"
+  alt="An electron beam is split at A by a metal foil, passes on opposite sides of a shielded solenoid along the paths through B and C, and recombines at F in an interference region.">
+:::
+
+::: {.setup-copy}
+
+- **Split at \(A\).** A metal foil divides one coherent beam into two.
+- **Flux locked inside.** The solenoid holds \(\Phi_B\); its shadow keeps the electrons out.
+- **Nothing to feel.** Along both paths \(\mathbf B=0\) — but \(\mathbf A\neq 0\).
+- **Yet \(F\) moves.** The fringes shift all the same.
+
+:::
+::::
+
+::: {.setup-phase}
+$$
+\Delta\varphi
+=
+\frac{q}{\hbar}
+\oint_C \mathbf A\cdot d\mathbf r
+=
+\frac{q\Phi_B}{\hbar}
+$$
+
+The phase records the **enclosed magnetic flux**, not a local magnetic field.
+:::
+
+
+
+
+
+
+
+
+
+
+
+## Tonomura’s toroidal experiment
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](assets/figures/tonomura_torus_shifted.svg){fig-align="center" width="95%"}
+:::
+
+::: {.column width="50%"}
+
+**The loophole:**
+real solenoids leak small magnetic fields.
+
+**Tonomura’s idea:**
+replace the solenoid with a **closed toroidal magnet**.
+
+\[
+B = 0 \quad \text{along the electron paths}
+\]
+
+\[
+\Delta \varphi
+= \frac{q}{\hbar}\oint_C \mathbf A\cdot d\mathbf r
+= \frac{q\Phi_B}{\hbar}
+\]
+
+:::
+
+::::
+
+. . .
+
+The electrons never cross the magnetic field,
+but the interference fringes still shift.
+
+::: notes
+Tonomura chiude l’obiezione sperimentale principale: non basta dire che fuori dal solenoide il campo è circa zero, perché un solenoide reale perde sempre un po’ di campo. Usando un toroide superconduttore, il flusso resta confinato fisicamente. Gli elettroni passano solo in regioni con campo magnetico nullo, ma il pattern di interferenza registra comunque il flusso racchiuso.
+:::
+
+
+
+## Sources {.sources-slide}
+
+::: {#refs}
+:::
