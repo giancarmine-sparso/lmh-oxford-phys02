@@ -376,37 +376,17 @@ $presentation-heading-font-weight: 600;
 
 /* Introduzione ai due potenziali */
 .reveal section.em-gauge-slide .em-intro {
-  margin: 0 0 0.12em;
+  margin: 0 0 0.16em;
 
-  font-size: 0.76em;
+  font-size: 0.66em;
   line-height: 1.28;
   text-align: center;
 }
 
-.reveal section.em-gauge-slide .em-intro p,
-.reveal section.em-gauge-slide .change-label p,
-.reveal section.em-gauge-slide .chi-note p,
-.reveal section.em-gauge-slide .same-fields p,
-.reveal section.em-gauge-slide .gauge-definition p {
-  max-width: none;
-  margin: 0;
-}
-
-.reveal section.em-gauge-slide .em-field-equations,
-.reveal section.em-gauge-slide .em-gauge-transform {
-  font-size: 0.96em;
-  text-align: center;
-}
-
-.reveal section.em-gauge-slide .em-field-equations p,
-.reveal section.em-gauge-slide .em-gauge-transform p {
-  margin: 0;
-}
-
 .reveal section.em-gauge-slide .change-label {
-  margin-top: 0.24em;
+  margin-top: 0.38em;
 
-  font-size: 0.7em;
+  font-size: 0.64em;
   line-height: 1.25;
   text-align: center;
 }

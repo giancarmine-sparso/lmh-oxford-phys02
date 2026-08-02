@@ -11,7 +11,7 @@ format:
     embed-resources: true
     self-contained-math: true
     html-math-method: mathml
-
+    
     theme:
       - default
       - theme.scss
