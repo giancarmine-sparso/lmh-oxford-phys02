@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>em-phase — standalone test harness</title>
+
+<!--
+  Standalone preview of the "potentials shift the phase" slide.
+
+  It is a HARNESS, not a deliverable: it reproduces the reveal.js stage
+  (1600 x 900, margin 0.04, root font-size 38px) and the parts of
+  theme.scss the component depends on, so that what is seen here is what
+  the slide will look like inside the deck.  The two pieces that DO ship
+  are marked below:
+
+    [SHIP -> theme.scss]  the em-phase component styles
+    [SHIP -> index.qmd]   the markup inside .em-phase-container
+
+  The JavaScript is not copied here at all: this page loads the real
+  ../js/em-phase-animation.js, so the harness always tests the file that
+  will be shipped.  With no window.Reveal present, that script falls back
+  to an IntersectionObserver, which is why the animation starts here.
+
+  MathJax is pulled from the same CDN and with the same configuration
+  Quarto uses for the deck.  Offline, the equations stay as raw TeX; the
+  animation itself has no network dependency whatsoever.
+-->
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS_HTML-full"></script>
+
+<style>
+/* ==========================================================
+   HARNESS ONLY — emulation of the reveal.js stage
+   ========================================================== */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: #070d17;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  color: #dce3ec;
+  font-family: "STIX Two Text", "Latin Modern Roman", "Libertinus Serif",
+               "Times New Roman", Times, serif;
+}
+
+/* reveal scales a 1600 x 900 stage uniformly to the viewport; the same
+   thing, with no JS, by pinning every length to the smaller of the two
+   viewport constraints.  Everything inside is therefore in em. */
+.em-phase-harness {
+  box-sizing: border-box;
+  width: min(100vw, 177.7778vh);
+  height: min(56.25vw, 100vh);
+  font-size: min(2.375vw, 4.2222vh);
+  display: grid;
+  place-items: center;
+}
+
+.em-phase-harness-slide {                 /* reveal margin: 0.04 */
+  box-sizing: border-box;
+  width: 92%;
+  height: 92%;
+  padding: 0.35em 0.55em;
+  text-align: left;
+}
+
+/* ---- excerpt of theme.scss the component sits on top of ---- */
+
+.em-phase-harness h2 {
+  margin: 0 0 0.22em;
+  color: #f4f6f8;
+  font-size: 1.55em;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.em-phase-harness .math.display {
+  display: block;
+  margin: 0.8em 0;
+  font-size: 1.15em;
+}
+
+/* ==========================================================
+   [SHIP -> theme.scss]  em-phase component
+   ========================================================== */
+
+.em-phase-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.42em;
+  width: 100%;
+}
+
+/* MathJax adds generous vertical rhythm; the slide has no room for it */
+.em-phase-container .math.display,
+.em-phase-container .MathJax_Display,
+.em-phase-container mjx-container[display="true"] {
+  margin: 0.1em 0 !important;
+}
+
+.em-phase-equations {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0 1.1em;
+  align-items: center;
+}
+
+.em-phase-master {
+  font-size: 1.02em;
+}
+
+.em-phase-total {
+  box-sizing: border-box;
+  padding: 0.1em 0.5em;
+  border: 1px solid transparent;
+  border-radius: 0.18em;
+  font-size: 0.8em;
+  opacity: 0.7;
+  transition: opacity 0.4s ease, border-color 0.4s ease, background-color 0.4s ease;
+}
+
+.em-phase-total.em-phase-is-active {
+  border-color: rgba(242, 201, 76, 0.45);
+  background: rgba(242, 201, 76, 0.07);
+  opacity: 1;
+}
+
+.em-phase-terms {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7em;
+}
+
+.em-phase-term {
+  display: flex;
+  gap: 0.55em;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  padding: 0.08em 0.6em;
+
+  border: 1px solid rgba(174, 184, 198, 0.2);
+  border-left: 0.1em solid rgba(174, 184, 198, 0.28);
+  border-radius: 0.18em;
+
+  font-size: 0.66em;
+  opacity: 0.38;
+  transition: opacity 0.4s ease, border-color 0.4s ease, background-color 0.4s ease;
+}
+
+.em-phase-term.em-phase-is-active {
+  border-color: rgba(242, 201, 76, 0.45);
+  border-left-color: #f2c94c;
+  background: rgba(242, 201, 76, 0.08);
+  opacity: 1;
+}
+
+.em-phase-term.em-phase-is-past {
+  opacity: 0.78;
+}
+
+.em-phase-term-value {
+  color: #f2c94c;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ---- the drawing ---- */
+
+.em-phase-stage {
+  display: block;
+  width: 100%;
+  height: auto;                          /* viewBox owns the aspect ratio */
+}
+
+.em-phase-svg-label {
+  fill: #aeb8c6;
+  font-family: inherit;
+  font-size: 21px;                       /* px = viewBox units, so it scales */
+}
+
+.em-phase-svg-ref   { fill: #a9b6c8; }
+.em-phase-svg-shift { fill: #f2c94c; }
+
+/* ---- status and controls ---- */
+
+.em-phase-footer {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.em-phase-status {
+  display: flex;
+  gap: 1em;
+  align-items: baseline;
+  min-width: 0;
+}
+
+.em-phase-stage-label {
+  color: #f2c94c;
+  font-size: 0.56em;
+}
+
+.em-phase-readout-wrap {
+  color: #aeb8c6;
+  font-size: 0.5em;
+  white-space: nowrap;
+}
+
+.em-phase-readout {
+  color: #dce3ec;
+  font-variant-numeric: tabular-nums;
+}
+
+.em-phase-controls {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 0.5em;
+  align-items: center;
+}
+
+.em-phase-button {
+  min-width: 6.5em;
+  padding: 0.35em 0.9em;
+
+  border: 1px solid rgba(174, 184, 198, 0.32);
+  border-radius: 0.2em;
+  background: transparent;
+
+  color: #aeb8c6;
+  font-family: inherit;
+  font-size: 0.4em;
+
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.em-phase-button:hover,
+.em-phase-button:focus-visible {
+  border-color: rgba(242, 201, 76, 0.55);
+  color: #f2c94c;
+}
+
+/* The progress bar IS the scrubber: one thin control instead of two.
+   The filled part is painted into the track by a gradient stop that JS
+   moves, so the same element reads as progress and seeks on drag. */
+.em-phase-scrub {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 7em;
+  height: 0.5em;                         /* hit area, not the visible bar */
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.em-phase-scrub::-webkit-slider-runnable-track {
+  height: 0.1em;
+  border-radius: 0.05em;
+  background: linear-gradient(to right,
+    #f2c94c var(--em-phase-progress, 0%),
+    rgba(174, 184, 198, 0.2) var(--em-phase-progress, 0%));
+}
+
+.em-phase-scrub::-moz-range-track {
+  height: 0.1em;
+  border-radius: 0.05em;
+  background: linear-gradient(to right,
+    #f2c94c var(--em-phase-progress, 0%),
+    rgba(174, 184, 198, 0.2) var(--em-phase-progress, 0%));
+}
+
+.em-phase-scrub::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 0.3em;
+  height: 0.3em;
+  margin-top: -0.1em;
+  border: none;
+  border-radius: 50%;
+  background: #f2c94c;
+}
+
+.em-phase-scrub::-moz-range-thumb {
+  width: 0.3em;
+  height: 0.3em;
+  border: none;
+  border-radius: 50%;
+  background: #f2c94c;
+}
+
+.em-phase-scrub:focus-visible {
+  outline: 1px solid rgba(242, 201, 76, 0.5);
+  outline-offset: 0.25em;
+}
+
+/* ---- closing statement ---- */
+
+.em-phase-takeaway {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12em;
+  min-height: 1.75em;                    /* reserved: no layout jump */
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.em-phase-takeaway.em-phase-is-visible {
+  opacity: 1;
+}
+
+.em-phase-takeaway-main {
+  color: #f4f6f8;
+  font-size: 0.66em;
+}
+
+.em-phase-takeaway-sub {
+  color: #aeb8c6;
+  font-size: 0.48em;
+  font-style: italic;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .em-phase-total,
+  .em-phase-term,
+  .em-phase-takeaway {
+    transition: none;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="em-phase-harness">
+<div class="em-phase-harness-slide">
+
+<h2>The potentials shift the phase</h2>
+
+<!-- ==========================================================
+     [SHIP -> index.qmd]  everything from here down
+     ========================================================== -->
+
+<div id="em-phase-root" class="em-phase-container">
+
+  <div class="em-phase-equations">
+    <div class="em-phase-master">
+      <span class="math display">\[
+        \psi(x,t)=\psi_0(x,t)\,\color{#f2c94c}{e^{i\Delta\theta_{\mathrm{EM}}}}
+      \]</span>
+    </div>
+    <div id="em-phase-total" class="em-phase-total">
+      <span class="math display">\[
+        \Delta\theta_{\mathrm{EM}}=\frac{q}{\hbar}\int\left(\mathbf A\cdot d\mathbf r-V\,dt\right)
+      \]</span>
+    </div>
+  </div>
+
+  <div class="em-phase-terms">
+    <div id="em-phase-term-a" class="em-phase-term">
+      <span class="math display">\[
+        \Delta\theta_A=\frac{q}{\hbar}\int\mathbf A\cdot d\mathbf r
+      \]</span>
+      <span id="em-phase-value-a" class="em-phase-term-value">= 0.00 π</span>
+    </div>
+    <div id="em-phase-term-v" class="em-phase-term">
+      <span class="math display">\[
+        \Delta\theta_V=-\frac{q}{\hbar}\int V\,dt
+      \]</span>
+      <span id="em-phase-value-v" class="em-phase-term-value">= 0.00 π</span>
+    </div>
+  </div>
+
+  <svg class="em-phase-stage" viewBox="0 0 1400 330" preserveAspectRatio="xMidYMid meet"
+       role="img" aria-label="A grey reference wave and a yellow wave of identical amplitude
+       and wavelength. The yellow wave slides horizontally by the electromagnetic phase.">
+    <defs>
+      <clipPath id="em-phase-clip">
+        <rect x="120" y="42" width="1240" height="288"></rect>
+      </clipPath>
+      <linearGradient id="em-phase-strip-gradient" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0"    stop-color="#3d4a5c"></stop>
+        <stop offset="0.25" stop-color="#f2c94c"></stop>
+        <stop offset="0.5"  stop-color="#3d4a5c"></stop>
+        <stop offset="0.75" stop-color="#78aee8"></stop>
+        <stop offset="1"    stop-color="#3d4a5c"></stop>
+      </linearGradient>
+      <!-- one tile = one wavelength; only patternTransform ever changes,
+           so the stripe spacing cannot breathe -->
+      <pattern id="em-phase-strip-pattern" patternUnits="userSpaceOnUse"
+               x="0" y="0" width="177.142857" height="24">
+        <rect x="0" y="0" width="177.142857" height="24"
+              fill="url(#em-phase-strip-gradient)"></rect>
+      </pattern>
+    </defs>
+
+    <text class="em-phase-svg-label" x="104" y="28" text-anchor="end">arg ψ</text>
+    <rect x="120" y="8" width="1240" height="24"
+          fill="url(#em-phase-strip-pattern)" opacity="0.75"></rect>
+    <rect x="120" y="8" width="1240" height="24" fill="none"
+          stroke="rgba(174,184,198,0.22)" stroke-width="1"></rect>
+
+    <text class="em-phase-svg-label em-phase-svg-ref" x="104" y="120"
+          text-anchor="end">ψ<tspan dy="7" font-size="0.72em">0</tspan></text>
+    <text class="em-phase-svg-label em-phase-svg-shift" x="104" y="272"
+          text-anchor="end">ψ</text>
+
+    <g clip-path="url(#em-phase-clip)">
+      <line x1="120" y1="112" x2="1360" y2="112"
+            stroke="rgba(174,184,198,0.16)" stroke-width="1"></line>
+      <line x1="120" y1="264" x2="1360" y2="264"
+            stroke="rgba(174,184,198,0.16)" stroke-width="1"></line>
+      <g id="em-phase-reference-wave">
+        <path id="em-phase-reference-path" fill="none" stroke="#a9b6c8"
+              stroke-width="2.6" stroke-linejoin="round"></path>
+      </g>
+      <g id="em-phase-shifted-wave">
+        <path id="em-phase-shifted-path" fill="none" stroke="#f2c94c"
+              stroke-width="3.4" stroke-linejoin="round"></path>
+      </g>
+    </g>
+
+    <line id="em-phase-guide-ref" y1="54" y2="194"
+          stroke="rgba(174,184,198,0.5)" stroke-width="1.4" stroke-dasharray="6 6"></line>
+    <line id="em-phase-guide-shift" y1="194" y2="324"
+          stroke="rgba(242,201,76,0.55)" stroke-width="1.4" stroke-dasharray="6 6"></line>
+    <g id="em-phase-offset" opacity="0">
+      <line id="em-phase-offset-line" y1="194" y2="194"
+            stroke="#f2c94c" stroke-width="1.6"></line>
+      <text id="em-phase-offset-label" class="em-phase-svg-label em-phase-svg-shift"
+            y="187" font-size="17" text-anchor="middle">Δx = Δθ / k</text>
+    </g>
+  </svg>
+
+  <div class="em-phase-footer">
+    <div class="em-phase-status">
+      <span id="em-phase-stage-label" class="em-phase-stage-label">No additional phase</span>
+      <span class="em-phase-readout-wrap">Δθ<sub>EM</sub> =
+        <span id="em-phase-readout" class="em-phase-readout">0.00 π</span></span>
+    </div>
+    <div class="em-phase-controls">
+      <button type="button" id="em-phase-playpause" class="em-phase-button"
+              aria-label="Play the animation">Play</button>
+      <button type="button" id="em-phase-restart" class="em-phase-button"
+              aria-label="Restart the animation">Restart</button>
+      <input type="range" id="em-phase-scrub" class="em-phase-scrub"
+             min="0" max="10000" step="10" value="0"
+             aria-label="Scrub through the animation">
+    </div>
+  </div>
+
+  <div id="em-phase-takeaway" class="em-phase-takeaway">
+    <span class="em-phase-takeaway-main">The potentials shift the phase — not the probability amplitude.</span>
+    <span class="em-phase-takeaway-sub">A single phase is not observable. A phase difference is.</span>
+  </div>
+
+</div>
+
+</div>
+</div>
+
+<script src="../js/em-phase-animation.js"></script>
+</body>
+</html>

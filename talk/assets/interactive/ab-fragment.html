@@ -20,6 +20,11 @@
 (function () {
   'use strict';
 
+  // Reveal's print view must be a deterministic still: the live component has
+  // no natural end because its waves and vector-potential arrows run forever.
+  var printQuery = new URLSearchParams(window.location.search);
+  var printMode = printQuery.has('print-pdf') || printQuery.get('view') === 'print';
+
   /* =====================================================================
      PHYSICS CONTRACT — do not "fix" these by eye. Visual tuning happens in
      CFG only; the four statements below are the content of the animation.
@@ -205,6 +210,15 @@
     var phiRatio = 0;                // Phi / Phi_0
     var dPhi = 0;                    // deltaPhi = 2*pi*Phi/Phi_0
     var cssW = 0, dpr = 1, scale = 1;
+    var printRandomState = 0x5f3759df;
+
+    // Keep the live animation random, but make the printed impact pattern
+    // reproducible across exports.
+    function randomUnit() {
+      if (!printMode) return Math.random();
+      printRandomState = (Math.imul(1664525, printRandomState) + 1013904223) >>> 0;
+      return printRandomState / 4294967296;
+    }
 
     /* ---------- arm paths: splitter -> mirror -> recombiner ----------- */
     function makeArm(sign) {          // sign = -1 upper (smaller y), +1 lower
@@ -251,16 +265,16 @@
       for (i = 1; i <= CFG.cdfBins; i++) cdf[i] /= acc;
     }
     function sampleY() {              // inverse-CDF sampling, binary search
-      var u = Math.random(), lo = 0, hi = CFG.cdfBins, mid;
+      var u = randomUnit(), lo = 0, hi = CFG.cdfBins, mid;
       while (lo < hi) { mid = (lo + hi) >> 1; if (cdf[mid] < u) lo = mid + 1; else hi = mid; }
-      return y0 + (y1 - y0) * (lo - Math.random()) / CFG.cdfBins;
+      return y0 + (y1 - y0) * (lo - randomUnit()) / CFG.cdfBins;
     }
 
     /* ---------- dot ring buffer --------------------------------------- */
     var dx_ = new Float32Array(CFG.maxDots), dy_ = new Float32Array(CFG.maxDots);
     var dotN = 0, dotHead = 0;
     function addDot() {
-      dx_[dotHead] = CFG.xScreen + Math.random() * CFG.screenW;
+      dx_[dotHead] = CFG.xScreen + randomUnit() * CFG.screenW;
       dy_[dotHead] = sampleY();
       dotHead = (dotHead + 1) % CFG.maxDots;
       if (dotN < CFG.maxDots) dotN++;
@@ -278,7 +292,7 @@
     function remapDots() { for (var i = 0; i < dotN; i++) dy_[i] = sampleY(); }
     function fillDots() {             // top the buffer up in one go
       for (var i = 0; i < CFG.maxDots; i++) {
-        dx_[i] = CFG.xScreen + Math.random() * CFG.screenW;
+        dx_[i] = CFG.xScreen + randomUnit() * CFG.screenW;
         dy_[i] = sampleY();
       }
       dotN = CFG.maxDots; dotHead = 0;
@@ -666,11 +680,11 @@
     function start() { if (!running) { running = true; rafId = requestAnimationFrame(loop); } }
     function stop() { running = false; if (rafId) cancelAnimationFrame(rafId); rafId = 0; }
 
-    if (window.IntersectionObserver) {
+    if (!printMode && window.IntersectionObserver) {
       new IntersectionObserver(function (es) {
         if (es[0].isIntersecting) start(); else stop();
       }, { threshold: 0.01 }).observe(cv);
-    } else { start(); }
+    } else if (!printMode) { start(); }
 
     /* ---------- slider ------------------------------------------------- */
     function setPhi(v) {
@@ -709,9 +723,26 @@
     if (btnPresent) btnPresent.addEventListener('click', function () { setMode('present'); btnPresent.blur(); });
 
     resize();
-    setPhi(0);
+    setPhi(printMode ? 0.5 : 0);
     setMode('present');            // stage default: dense from the first frame
-    start();
+
+    if (printMode) {
+      // Draw once at a fixed phase of the travelling waves. Redraw after the
+      // load event because Reveal computes its print layout asynchronously.
+      function renderPrintFrame() {
+        resize();
+        frame(0);
+        root.setAttribute('data-print-ready', 'true');
+      }
+      renderPrintFrame();
+      window.addEventListener('load', function () {
+        requestAnimationFrame(function () {
+          requestAnimationFrame(renderPrintFrame);
+        });
+      }, { once: true });
+    } else {
+      start();
+    }
   } catch (e) { /* fail silently: never throw into the slide deck */ }
 })();
 </script>

@@ -1,0 +1,851 @@
+/*-- scss:defaults --*/
+
+$night: #070d17;
+$paper: #dce3ec;
+$heading: #f4f6f8;
+$muted: #aeb8c6;
+$accent: #f2c94c;
+
+$body-bg: $night;
+$body-color: $paper;
+$link-color: $accent;
+
+$font-family-sans-serif:
+  "STIX Two Text",
+  "Latin Modern Roman",
+  "Libertinus Serif",
+  "Times New Roman",
+  Times,
+  serif;
+
+$presentation-heading-font:
+  "STIX Two Text",
+  "Latin Modern Roman",
+  "Libertinus Serif",
+  "Times New Roman",
+  Times,
+  serif;
+
+$presentation-heading-color: $heading;
+$presentation-heading-font-weight: 600;
+
+
+/*-- scss:rules --*/
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+  letter-spacing: -0.015em;
+  text-transform: none;
+}
+
+.reveal h3 {
+  color: $heading;
+}
+
+.reveal strong {
+  color: $accent;
+  font-weight: 600;
+}
+
+.reveal a {
+  color: $accent;
+}
+
+.reveal li::marker {
+  color: $accent;
+}
+
+.reveal img,
+.reveal video {
+  filter: none;
+  mix-blend-mode: normal;
+}
+
+.reveal h2 {
+  font-size: 1.5em;
+  line-height: 1.08;
+  font-weight: 600;
+}
+.reveal p,
+.reveal li {
+  line-height: 1.35;
+}
+.reveal {
+  font-size: 38px;
+}
+
+.reveal .slides section {
+  box-sizing: border-box;
+  padding: 0.35em 0.55em;
+}
+
+.reveal h2 {
+  font-size: 1.55em;
+  line-height: 1.1;
+}
+
+.reveal p {
+  max-width: 34em;
+}
+
+.reveal ul {
+  margin-top: 0.7em;
+}
+
+.reveal li {
+  margin-bottom: 0.3em;
+}
+
+.reveal .math.display {
+  margin: 0.8em 0;
+  font-size: 1.15em;
+}
+
+
+
+/* Title slide */
+
+.reveal #title-slide {
+  box-sizing: border-box;
+  padding: 1.4em 1.15em 0.8em;
+  text-align: left;
+}
+
+.reveal #title-slide .title {
+  max-width: 12em;
+  margin-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.02;
+  font-weight: 600;
+}
+
+.reveal #title-slide .subtitle {
+  max-width: 21em;
+  margin-top: 0;
+  margin-bottom: 2.2em;
+  color: $muted;
+  font-size: 0.95em;
+  line-height: 1.3;
+  font-style: normal;
+}
+
+.reveal #title-slide .quarto-title-authors {
+  display: block;
+  width: 100%;
+  margin-top: 2.2em;
+}
+
+.reveal #title-slide .quarto-title-author {
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+.reveal #title-slide .quarto-title-author-name {
+  margin: 0;
+  color: $paper;
+  font-size: 0.72em;
+  font-weight: 600;
+  text-align: left;
+}
+
+.reveal #title-slide .institute,
+.reveal #title-slide .quarto-title-affiliation {
+  margin-top: 0.25em;
+  color: $muted;
+  font-size: 0.55em;
+  text-align: left;
+}
+
+.reveal .slide-number {
+  color: $muted;
+  background: transparent;
+}
+
+.reveal section.thank-you-slide h2 {
+  max-width: none;
+  margin: 4.25em auto 0;
+  font-size: 2.25em;
+  text-align: center;
+}
+
+.reveal section.thank-you-slide h2::after {
+  display: block;
+  width: 2.2em;
+  margin: 0.42em auto 0;
+  border-top: 0.06em solid $accent;
+  content: "";
+}
+
+.reveal section.sources-slide h2 {
+  margin-bottom: 0.7em;
+}
+
+.reveal section.sources-slide #refs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9em 1.35em;
+  font-size: 0.8em;
+  line-height: 1.3;
+}
+
+.reveal section.sources-slide .csl-entry {
+  margin: 0;
+  padding-top: 0.65em;
+  border-top: 1px solid rgba($muted, 0.28);
+}
+
+.reveal section.sources-slide .csl-entry a {
+  overflow-wrap: anywhere;
+}
+
+.reveal .em-takeaway {
+  margin-top: 1.2em;
+  color: $accent;
+}
+
+.reveal .em-takeaway strong {
+  color: inherit;
+}
+
+.reveal .potential-shift-slide {
+  color: $paper;
+  background-color: $night;
+}
+
+.reveal .potential-shift-slide p,
+.reveal .potential-shift-slide .math,
+.reveal .potential-shift-slide .MathJax,
+.reveal .potential-shift-slide .katex,
+.reveal .potential-shift-slide mjx-container {
+  color: $paper;
+}
+
+.reveal .potential-shift-slide .potential-accent {
+  color: $accent;
+}
+
+.reveal .potential-shift-slide menclose[notation="box"],
+.reveal section.schrodinger-potentials menclose[notation="box"] {
+  color: $accent;
+}
+
+.reveal .potential-shift-slide .potential-stack {
+  width: 100%;
+  height: 520px;
+}
+
+.reveal .potential-shift-slide .potential-copy {
+  width: 100%;
+  text-align: center;
+}
+
+.reveal .potential-shift-slide .potential-copy p {
+  font-size: 1.08em;
+}
+
+.reveal .potential-shift-slide .potential-video {
+  width: 100%;
+  height: 100%;
+  background-color: $night;
+}
+
+.reveal .potential-shift-slide .potential-video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: $night;
+  filter: none !important;
+  opacity: 1;
+}
+
+.reveal .potential-shift-slide .takeaway {
+  margin-top: 1em;
+  color: $muted;
+  font-style: italic;
+}
+
+.reveal .potential-shift-slide .takeaway p {
+  color: inherit;
+}
+
+
+/* Electromagnetism slide */
+
+.reveal .electromagnetism-slide .gauge-definition {
+  margin: 0.15em 0 0.75em;
+  padding: 0.4em 0.65em;
+  border-left: 0.12em solid $accent;
+  background: rgba($accent, 0.08);
+  font-size: 0.84em;
+}
+
+.reveal .electromagnetism-slide .gauge-definition p {
+  max-width: none;
+  margin: 0;
+}
+
+.reveal .electromagnetism-slide .gauge-grid {
+  gap: 0.75em;
+  align-items: stretch;
+  margin: 0;
+}
+
+.reveal .electromagnetism-slide .gauge-grid > .column {
+  box-sizing: border-box;
+  padding: 0.55em 0.7em 0.35em;
+  border: 1px solid rgba($muted, 0.28);
+  border-top: 0.08em solid rgba($accent, 0.75);
+  border-radius: 0.18em;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.reveal .electromagnetism-slide .formula-label {
+  color: $muted;
+  font-size: 0.58em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.reveal .electromagnetism-slide .gauge-grid .math.display {
+  margin: 0.65em 0 0.35em;
+  font-size: 1.08em;
+}
+
+.reveal .electromagnetism-slide .gauge-result {
+  margin-top: 0.75em;
+  padding: 0.42em 0.7em 0.3em;
+  border: 1px solid rgba($accent, 0.42);
+  border-radius: 0.18em;
+  background: rgba($accent, 0.075);
+  text-align: center;
+  font-size: 0.78em;
+}
+
+.reveal .electromagnetism-slide .gauge-result p {
+  max-width: none;
+  margin: 0;
+}
+
+.reveal .electromagnetism-slide .gauge-result .math.display {
+  margin: 0.28em 0 0.05em;
+  color: $accent;
+  font-size: 1.25em;
+}
+
+/* ---------------------------------------------------------
+   Electromagnetism / gauge-freedom slide
+   --------------------------------------------------------- */
+
+.reveal section.em-gauge-slide {
+  --gauge-yellow: #f2c14e;
+  --gauge-blue: #78aee8;
+}
+
+.reveal section.em-gauge-slide h2 {
+  margin-bottom: 0.3em;
+}
+
+/* Keep both MathJax 2 and MathJax 3 output compact. */
+.reveal section.em-gauge-slide .math.display,
+.reveal section.em-gauge-slide .MathJax_Display,
+.reveal section.em-gauge-slide mjx-container[display="true"] {
+  margin: 0.18em 0 !important;
+}
+
+/* Richiamo alla slide gravitazionale precedente */
+.reveal section.em-gauge-slide .gravity-bridge {
+  margin: 0 0 0.48em;
+  padding: 0.38em 0.65em;
+
+  border-left: 0.12em solid var(--gauge-yellow);
+  border-radius: 0 0.14em 0.14em;
+
+  background: rgba(255, 255, 255, 0.045);
+
+  font-size: 0.66em;
+  line-height: 1.28;
+}
+
+/* Introduzione ai due potenziali */
+.reveal section.em-gauge-slide .em-intro {
+  margin: 0 0 0.12em;
+
+  font-size: 0.76em;
+  line-height: 1.28;
+  text-align: center;
+}
+
+.reveal section.em-gauge-slide .em-intro p,
+.reveal section.em-gauge-slide .change-label p,
+.reveal section.em-gauge-slide .chi-note p,
+.reveal section.em-gauge-slide .same-fields p,
+.reveal section.em-gauge-slide .gauge-definition p {
+  max-width: none;
+  margin: 0;
+}
+
+.reveal section.em-gauge-slide .em-field-equations,
+.reveal section.em-gauge-slide .em-gauge-transform {
+  font-size: 0.96em;
+  text-align: center;
+}
+
+.reveal section.em-gauge-slide .em-field-equations p,
+.reveal section.em-gauge-slide .em-gauge-transform p {
+  margin: 0;
+}
+
+.reveal section.em-gauge-slide .change-label {
+  margin-top: 0.24em;
+
+  font-size: 0.7em;
+  line-height: 1.25;
+  text-align: center;
+}
+
+/* Nota sulla funzione chi */
+.reveal section.em-gauge-slide .chi-note {
+  margin-top: 0;
+
+  font-size: 0.58em;
+  line-height: 1.2;
+  text-align: center;
+
+  opacity: 0.72;
+}
+
+/* Risultato fisico principale */
+.reveal section.em-gauge-slide .same-fields {
+  width: fit-content;
+
+  margin: 0.32em auto 0.28em;
+  padding: 0.02em 1em;
+
+  border: 1px solid rgba(120, 174, 232, 0.58);
+  border-radius: 0.18em;
+
+  background: rgba(120, 174, 232, 0.08);
+
+  font-size: 0.82em;
+}
+
+/* Definizione finale */
+.reveal section.em-gauge-slide .gauge-definition {
+  margin-top: 0.12em;
+  padding: 0.42em 0.68em;
+
+  border: 1px solid rgba(242, 193, 78, 0.48);
+  border-radius: 0.16em;
+
+  background: rgba(242, 193, 78, 0.075);
+
+  font-size: 0.7em;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.reveal section.em-gauge-slide .gauge-term {
+  color: var(--gauge-yellow);
+  font-weight: 700;
+}
+
+
+/* ---------------------------------------------------------
+   Tonomura toroidal experiment
+   --------------------------------------------------------- */
+
+.reveal section.tonomura-slide h2 {
+  margin-bottom: 0.34em;
+}
+
+.reveal section.tonomura-slide .tonomura-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.05em;
+  align-items: center;
+}
+
+.reveal section.tonomura-slide .tonomura-visual,
+.reveal section.tonomura-slide .tonomura-copy {
+  min-width: 0;
+}
+
+.reveal section.tonomura-slide .tonomura-visual p,
+.reveal section.tonomura-slide .tonomura-visual figure {
+  margin: 0;
+}
+
+.reveal section.tonomura-slide .tonomura-figure {
+  display: block;
+  width: min(100%, 15.7em);
+  max-width: none;
+  max-height: 15.7em;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.reveal section.tonomura-slide .tonomura-copy {
+  font-size: 0.76em;
+  line-height: 1.25;
+}
+
+.reveal section.tonomura-slide .tonomura-copy p {
+  max-width: none;
+  margin: 0 0 0.52em;
+}
+
+.reveal section.tonomura-slide .tonomura-copy .math.display,
+.reveal section.tonomura-slide .tonomura-copy .MathJax_Display,
+.reveal section.tonomura-slide .tonomura-copy mjx-container[display="true"] {
+  margin: 0.38em 0 !important;
+}
+
+.reveal section.tonomura-slide .tonomura-field {
+  font-size: 1.04em;
+}
+
+.reveal section.tonomura-slide .tonomura-phase {
+  font-size: 0.94em;
+}
+
+.reveal section.tonomura-slide .tonomura-field p,
+.reveal section.tonomura-slide .tonomura-phase p {
+  margin: 0;
+}
+
+.reveal section.tonomura-slide .tonomura-takeaway {
+  margin-top: 0.48em;
+  padding: 0.42em 0.68em;
+  border-left: 0.12em solid $accent;
+  background: rgba($accent, 0.065);
+  font-size: 0.72em;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.reveal section.tonomura-slide .tonomura-takeaway p {
+  max-width: none;
+  margin: 0;
+}
+
+
+/* =========================================================
+   AHARONOV INTUITION
+   ========================================================= */
+
+.ab-intuition-slide .phase-one-liner {
+  margin-top: 0.2rem;
+  margin-bottom: 1rem;
+  font-size: 0.72em;
+  opacity: 0.72;
+  text-align: center;
+}
+
+.intuition-layout {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 2.2rem;
+  align-items: center;
+}
+
+.intuition-text {
+  font-size: 0.82em;
+  line-height: 1.35;
+}
+
+.intuition-kicker {
+  margin-bottom: 0.45rem;
+  color: #f2c94c;
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.intuition-question {
+  margin-top: 0.8rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  color: #f2c94c;
+  font-size: 1.08em;
+  font-weight: 600;
+}
+
+.scientists-mini {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.scientists-mini figure {
+  margin: 0;
+  text-align: center;
+}
+
+.scientists-mini img {
+  width: 100%;
+  height: 290px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.65rem;
+  filter: grayscale(100%);
+  box-shadow: 0 0.6rem 1.6rem rgba(0, 0, 0, 0.32);
+}
+
+.scientists-mini figure:first-child img {
+  object-position: 76% center;
+}
+
+.scientists-mini figcaption {
+  margin-top: 0.35rem;
+  font-size: 0.58em;
+  opacity: 0.82;
+}
+
+.image-sources {
+  position: absolute;
+  right: 1.2rem;
+  bottom: 0.6rem;
+  left: 1.2rem;
+  font-size: 0.32em;
+  text-align: center;
+  opacity: 0.48;
+}
+
+.image-sources a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   AHARONOV INTUITION
+   ========================================================= */
+
+.ab-intuition-slide .phase-one-liner {
+  margin-top: 0.2rem;
+  margin-bottom: 1rem;
+  font-size: 0.72em;
+  opacity: 0.72;
+  text-align: center;
+}
+
+.intuition-layout {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 2.2rem;
+  align-items: center;
+}
+
+.intuition-text {
+  font-size: 0.82em;
+  line-height: 1.35;
+}
+
+.intuition-kicker {
+  margin-bottom: 0.45rem;
+  color: #f2c94c;
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.intuition-question {
+  margin-top: 0.8rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  color: #f2c94c;
+  font-size: 1.08em;
+  font-weight: 600;
+}
+
+.scientists-mini {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.scientists-mini figure {
+  margin: 0;
+  text-align: center;
+}
+
+.scientists-mini img {
+  width: 100%;
+  height: 290px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.65rem;
+  filter: grayscale(100%);
+  box-shadow: 0 0.6rem 1.6rem rgba(0, 0, 0, 0.32);
+}
+
+.scientists-mini figure:first-child img {
+  object-position: 76% center;
+}
+
+.scientists-mini figcaption {
+  margin-top: 0.35rem;
+  font-size: 0.58em;
+  opacity: 0.82;
+}
+
+.image-sources {
+  position: absolute;
+  right: 1.2rem;
+  bottom: 0.6rem;
+  left: 1.2rem;
+  font-size: 0.32em;
+  text-align: center;
+  opacity: 0.48;
+}
+
+.image-sources a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   AB SETUP
+   ========================================================= */
+
+.reveal section.ab-setup-slide h2 {
+  margin-bottom: 0.42em;
+}
+
+.reveal section.ab-setup-slide .setup-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 1.6em;
+  align-items: center;
+  width: min(100%, 36em);
+  margin: 0 auto;
+}
+
+.reveal section.ab-setup-slide .setup-visual {
+  min-width: 0;
+}
+
+.reveal section.ab-setup-slide .setup-visual p {
+  margin: 0;
+}
+
+.reveal section.ab-setup-slide .setup-figure {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  margin: 0;
+}
+
+.reveal section.ab-setup-slide .setup-figure-crop {
+  height: 10.1em;
+  overflow: hidden;
+  background: #fff;
+}
+
+.reveal section.ab-setup-slide .setup-figure-crop img {
+  display: block;
+  width: 151%;
+  max-width: none;
+  height: auto;
+  margin: 0;
+  transform: translateX(-17%);
+}
+
+.reveal section.ab-setup-slide .setup-copy {
+  font-size: 0.78em;
+}
+
+.reveal section.ab-setup-slide .setup-copy ul {
+  margin: 0;
+}
+
+.reveal section.ab-setup-slide .setup-copy li {
+  margin-bottom: 0.72em;
+  line-height: 1.2;
+}
+
+.reveal section.ab-setup-slide .setup-phase {
+  width: min(100%, 32em);
+  margin: 0.72em auto 0;
+  text-align: center;
+}
+
+.reveal section.ab-setup-slide .setup-phase .math.display {
+  margin: 0 0 0.32em;
+  font-size: 0.94em;
+}
+
+.reveal section.ab-setup-slide .setup-phase p {
+  max-width: none;
+  margin: 0;
+  color: $muted;
+  font-size: 0.62em;
+}
+
+
+/* =========================================================
+   AB INTERACTIVE ANIMATION
+   ========================================================= */
+
+.reveal section.ab-animation-slide h2 {
+  margin-bottom: 0.22em;
+}
+
+.reveal section.ab-animation-slide #ab-root {
+  max-width: 34em !important;
+}
+
+
+/* =========================================================
+   DETERMINISTIC PDF FALLBACK
+   ========================================================= */
+
+.reveal .potential-video-print {
+  display: none;
+}
+
+html.reveal-print .reveal .slides section .fragment:not(.fade-out) {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+html.reveal-print .reveal .slides section .fragment.fade-out {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+html.reveal-print .reveal .potential-shift-slide .potential-video-live {
+  display: none !important;
+}
+
+html.reveal-print .reveal .potential-shift-slide .potential-stack {
+  height: 680px;
+}
+
+html.reveal-print .reveal .potential-shift-slide .potential-video-print {
+  display: block !important;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  object-fit: contain;
+  background-color: $night;
+}
+
+html.reveal-print .reveal section.ab-animation-slide #ab-ctl {
+  display: none !important;
+}

@@ -1,0 +1,29 @@
+% !TeX program = lualatex
+% Standalone wrapper: renders the original magnetic Aharonov--Bohm TikZ figure
+% (../notes/figures/a-bohm-solenoid.tex) for the dark reveal.js deck.
+% The figure source is NOT duplicated here: colours are remapped so that the
+% notes and the slides stay a single source of truth.
+\documentclass[tikz,border=2pt]{standalone}
+
+\usepackage{fontspec}
+\setmainfont{STIX Two Text}
+\usepackage{unicode-math}
+\setmathfont{STIX Two Math}
+
+\usetikzlibrary{arrows.meta,angles,quotes,calc,decorations.markings}
+
+% --- deck palette (talk/theme.scss) ---
+\definecolor{paper}{HTML}{DCE3EC}
+\definecolor{night}{HTML}{070D17}
+\definecolor{accent}{HTML}{F2C94C}
+
+% Remap the two base colours used by the figure instead of editing it:
+%   black -> light ink on the dark background
+%   white -> background, so the open vertex markers stay "open"
+\colorlet{black}{paper}
+\colorlet{white}{night}
+
+\begin{document}
+\color{paper}
+\input{../notes/figures/a-bohm-solenoid.tex}
+\end{document}
