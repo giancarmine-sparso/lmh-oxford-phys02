@@ -1,0 +1,369 @@
+% !TeX program = lualatex
+\documentclass[a4paper,11pt]{report}
+
+% =============================================================
+%  Independent study notes base
+%  The Aharonov--Bohm Effect
+%  Compiler: LuaLaTeX
+% =============================================================
+
+% --- Engine / language ---
+\usepackage{iftex}
+\ifPDFTeX
+  % csquotes expects the input encoding to be configured before it is loaded.
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\fi
+\usepackage[british]{babel}
+\usepackage{csquotes}
+
+% --- Layout ---
+\usepackage[
+  top=2.6cm,
+  bottom=2.6cm,
+  left=2.5cm,
+  right=2.5cm,
+  headheight=22pt
+]{geometry}
+
+\usepackage[skip=6pt, indent=0pt]{parskip}
+\usepackage{setspace}
+\setstretch{1.06}
+
+\usepackage{microtype}
+\usepackage{needspace}
+
+% Load before unicode-math for clean LuaLaTeX math setup.
+\usepackage{mathtools}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+
+% --- Fonts ---
+\ifPDFTeX
+  \usepackage{libertine}
+  \usepackage[libertine]{newtxmath}
+  \usepackage{inconsolata}
+\else
+  \usepackage{fontspec}
+  \defaultfontfeatures{Ligatures=TeX}
+
+  \setmainfont{STIX Two Text}
+  \setsansfont{Libertinus Sans}
+  \setmonofont{Inconsolata}
+
+  \usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
+  \setmathfont{STIX Two Math}
+\fi
+
+% --- Mathematics ---
+% Use the current array release with recent kernels and its compatible
+% rollback on TeX installations whose format has not yet caught up.
+\IfFormatAtLeastTF{2026-06-01}
+  {\usepackage{array}}
+  {\usepackage{array}[=v2.6]}
+\usepackage{siunitx}
+
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Prob}{Prob}
+
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\h}{\hbar}
+\newcommand{\Ham}{\hat{H}}
+\newcommand{\Id}{\mathbb{I}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Hilb}{\mathcal{H}}
+\newcommand{\ket}[1]{\left|#1\right\rangle}
+\newcommand{\bra}[1]{\left\langle#1\right|}
+\newcommand{\braket}[2]{\left\langle#1\,\middle|\,#2\right\rangle}
+\newcommand{\ketbra}[2]{\left|#1\right\rangle\!\left\langle#2\right|}
+\newcommand{\expect}[1]{\left\langle#1\right\rangle}
+\newcommand{\matrixel}[3]{\left\langle#1\,\middle|\,#2\,\middle|\,#3\right\rangle}
+\newcommand{\comm}[2]{\left[#1,#2\right]}
+\newcommand{\anticomm}[2]{\left\{#1,#2\right\}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\grad}[1]{%
+  \left(
+    \pdv{#1}{x},\,
+    \pdv{#1}{y},\,
+    \pdv{#1}{z}
+  \right)
+}
+\newcommand{\dv}[2]{\frac{\dd #1}{\dd #2}}
+\newcommand{\inner}[2]{\left\langle #1, #2 \right\rangle}
+
+% --- Tables ---
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+
+\renewcommand\theadfont{\bfseries}
+\setcellgapes{2pt}
+\makegapedcells
+
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\Centering\arraybackslash}p{#1}}
+
+\newcommand{\compacttable}{%
+  \small
+  \setlength{\tabcolsep}{4pt}%
+  \renewcommand{\arraystretch}{1.15}%
+}
+
+% --- Figures ---
+\usepackage{graphicx}
+\graphicspath{{assets/figures/}}
+
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\captionsetup{
+  font      = small,
+  labelfont = bf,
+  labelsep  = period,
+  skip      = 6pt
+}
+
+% --- Lists ---
+\usepackage{enumitem}
+
+\setlist[itemize]{
+  topsep=3pt,
+  itemsep=2pt,
+  parsep=0pt,
+  leftmargin=1.5em
+}
+
+\setlist[enumerate]{
+  topsep=3pt,
+  itemsep=2pt,
+  parsep=0pt,
+  leftmargin=1.8em
+}
+
+% --- Colors ---
+\usepackage{xcolor}
+
+\definecolor{noteblue}{HTML}{1F4E79}
+\definecolor{notegray}{HTML}{555555}
+\definecolor{lightgray}{HTML}{F4F5F7}
+\definecolor{lightblue}{HTML}{EEF5FB}
+\definecolor{lightyellow}{HTML}{FFF8E5}
+\definecolor{lightred}{HTML}{FDECEC}
+\definecolor{lightgreen}{HTML}{EEF8F0}
+
+% --- Theory boxes ---
+\usepackage[most]{tcolorbox}
+\usetikzlibrary{arrows.meta,angles,quotes,calc,decorations.markings}
+
+\tcbset{
+  enhanced,
+  sharp corners,
+  boxrule=0.45pt,
+  left=7pt,
+  right=7pt,
+  top=6pt,
+  bottom=6pt,
+  before skip=8pt,
+  after skip=8pt
+}
+
+\newtcolorbox{definitionbox}[1][]{
+  colback=lightblue,
+  colframe=noteblue,
+  title=\textbf{Definition},
+  #1
+}
+
+\newtcolorbox{principlebox}[1][]{
+  colback=lightgreen,
+  colframe=notegray,
+  title=\textbf{Principle},
+  #1
+}
+
+\newtcolorbox{formulabox}[1][]{
+  colback=lightgray,
+  colframe=notegray,
+  title=\textbf{Formula},
+  #1
+}
+
+\newtcolorbox{derivationbox}[1][]{
+  colback=white,
+  colframe=noteblue,
+  title=\textbf{Derivation},
+  #1
+}
+
+\newtcolorbox{examplebox}[1][]{
+  colback=white,
+  colframe=noteblue,
+  title=\textbf{Example},
+  #1
+}
+
+\newtcolorbox{warningbox}[1][]{
+  colback=lightred,
+  colframe=black,
+  title=\textbf{Warning},
+  #1
+}
+
+\newtcolorbox{interpretationbox}[1][]{
+  colback=lightyellow,
+  colframe=notegray,
+  title=\textbf{Interpretation},
+  #1
+}
+
+% --- Bibliography ---
+\usepackage[backend=biber]{biblatex}
+\addbibresource{../../references/references.bib}
+\DeclareBibliographyAlias{video}{online}
+
+\AtEveryBibitem{%
+  % Never display the access date.
+  \clearfield{urlyear}%
+  \clearfield{urlmonth}%
+  \clearfield{urlday}%
+
+  % A DOI is sufficient for journal articles; omit the duplicate URL.
+  \ifentrytype{article}{%
+    \clearfield{url}%
+  }{}%
+}
+
+% --- Hyperref / cleveref ---
+\usepackage[hidelinks]{hyperref}
+\usepackage{bookmark}
+\usepackage[english]{cleveref}
+
+% --- Heading styles ---
+\usepackage{titlesec}
+
+\titleformat{\chapter}[display]
+  {\huge\bfseries}
+  {\large\color{notegray}\chaptertitlename\ \thechapter}
+  {0.6ex}
+  {}
+  [\vspace{4pt}{\color{black!40}\titlerule[0.8pt]}]
+\titlespacing*{\chapter}{0pt}{0pt}{3ex}
+
+\titleformat{\section}
+  {\Large\bfseries}
+  {\thesection}{0.8em}{}
+  [\vspace{2pt}{\color{black!40}\titlerule[0.6pt]}]
+\titlespacing*{\section}{0pt}{2.2ex plus 0.5ex}{1.4ex}
+
+\titleformat{\subsection}
+  {\large\bfseries}
+  {\thesubsection}{0.7em}{}
+\titlespacing*{\subsection}{0pt}{1.8ex plus 0.4ex}{0.8ex}
+
+\titleformat{\subsubsection}
+  {\normalsize\bfseries\itshape}
+  {\thesubsubsection}{0.6em}{}
+\titlespacing*{\subsubsection}{0pt}{1.5ex plus 0.3ex}{0.6ex}
+
+% Avoid isolated headings at the bottom of a page.
+\usepackage{etoolbox}
+\pretocmd{\section}{\needspace{8\baselineskip}}{}{}
+\pretocmd{\subsection}{\needspace{5\baselineskip}}{}{}
+\pretocmd{\subsubsection}{\needspace{3\baselineskip}}{}{}
+
+% --- Header / Footer ---
+\usepackage{fancyhdr}
+
+\newcommand{\notetitle}{The Aharonov--Bohm Effect}
+\newcommand{\notesubtitle}{Study Notes for the PHYS02 Scientific Talk}
+\newcommand{\course}{Independent Study Notes}
+\newcommand{\studentname}{Giancarmine Sparso}
+\newcommand{\academicyear}{July 2026}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape \course}
+\fancyhead[R]{\small\itshape \academicyear}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% --- Opening header ---
+\newcommand{\makenotesheader}{%
+  \thispagestyle{empty}
+
+  \noindent
+  {\footnotesize\itshape
+    \course
+    \hfill
+    \academicyear
+  }\par
+  \vspace{2pt}
+
+  \rule{\textwidth}{0.4pt}
+
+  \vspace{18pt}
+
+  \begin{center}
+    {\Large\bfseries\notetitle\par}
+
+    \vspace{5pt}
+
+    {\large\itshape\notesubtitle\par}
+
+    \vspace{8pt}
+
+    {\small \studentname\par}
+  \end{center}
+
+  \vspace{6pt}
+
+  \begin{center}
+    \begin{minipage}{0.82\textwidth}
+      \footnotesize
+      \textbf{Abstract.}
+      These notes develop the conceptual and mathematical foundations of the
+      Aharonov--Bohm effect in preparation for a scientific talk. They are intended
+      as a progressively developed record of the study process, including
+      definitions, derivations, conceptual remarks, and relevant experimental
+      results.
+    \end{minipage}
+  \end{center}
+
+  \vspace{5pt}
+  \noindent\rule{\textwidth}{0.3pt}\par
+  \vspace{2pt}
+}
+
+\begin{document}
+
+\makenotesheader
+
+\begingroup
+\let\clearpage\relax
+\let\cleardoublepage\relax
+\tableofcontents
+\endgroup
+\thispagestyle{empty}
+
+\include{chapters/theoretical-foundations}
+\input{sections/electromagnetic-potential}
+\input{sections/gauge}
+\input{sections/potentials-qm}
+\include{chapters/aharonov-bohm-effect}
+
+\nocite{*}
+\printbibliography
+
+\end{document}

@@ -1,0 +1,69 @@
+\begin{tikzpicture}[
+	line cap=round, line join=round,
+	axisline/.style={-{Latex[length=2mm]}, line width=0.4pt, black!80},
+	dial/.style={line width=0.35pt, black!45, dash pattern=on 1.1pt off 1.3pt},
+	hand/.style={-{Latex[length=1.4mm,width=1.1mm]}, line width=0.7pt, black},
+	guide/.style={line width=0.3pt, black!35, dotted},
+	curve/.style={line width=0.8pt, black},
+	lbl/.style={font=\footnotesize}
+	]
+
+	%================ (a) the value of psi at one point ================
+	\begin{scope}
+		\def\R{1.40}
+		\pgfmathsetmacro{\th}{54}
+		\pgfmathsetmacro{\rr}{1.05}
+
+		\draw[axisline] (-\R-0.30,0) -- (\R+0.50,0) node[right,lbl] {$\operatorname{Re}$};
+		\draw[axisline] (0,-\R-0.30) -- (0,\R+0.50) node[above,lbl] {$\operatorname{Im}$};
+
+		\draw[dial] (0,0) circle (\R);
+
+		\draw[guide] (\th:\rr) -- ({\rr*cos(\th)},0);
+		\draw[guide] (\th:\rr) -- (0,{\rr*sin(\th)});
+
+		\draw[line width=0.4pt, black!80] (0.40,0) arc (0:\th:0.40);
+		\node[lbl] at ({0.68*cos(0.5*\th)},{0.68*sin(0.5*\th)}) {$\theta$};
+
+		\draw[hand] (0,0) -- (\th:\rr);
+		\fill (0,0) circle (0.035);
+
+		\path (0,0) -- (\th:\rr)
+		node[midway, sloped, above, lbl, inner sep=1.5pt] {$|\psi|$};
+
+		\node[lbl] at (0,-\R-0.75) {$\psi(x)=|\psi|\,e^{i\theta}$};
+	\end{scope}
+
+	%================ (b) psi along space ================
+	\begin{scope}[shift={(-4.05,-4.65)}]
+		\def\dx{1.35}
+		\def\r{0.52}
+		\def\yc{-1.55}
+		\def\hmax{1.20}
+		\pgfmathsetmacro{\xc}{3*\dx}
+		\pgfmathsetmacro{\sig}{2.6*\dx}
+
+		% modulus profile
+		\draw[curve] plot[domain=-0.85:8.95, samples=180, smooth]
+		(\x,{\hmax*exp(-0.5*(\x-\xc)*(\x-\xc)/(\sig*\sig))});
+		\node[lbl, above right] at (7.05,{\hmax*exp(-0.5*(7.05-\xc)*(7.05-\xc)/(\sig*\sig))})
+		{$|\psi(x)|$};
+
+		% axis
+		\draw[axisline] (-1.05,0) -- (9.15,0) node[right,lbl] {$x$};
+
+		\foreach \i in {0,...,6}{
+				\pgfmathsetmacro{\xi}{\i*\dx}
+				\pgfmathsetmacro{\amp}{exp(-0.5*(\xi-\xc)*(\xi-\xc)/(\sig*\sig))}
+				\pgfmathsetmacro{\ang}{\i*45}
+				\draw[line width=0.4pt, black!80] (\xi,0) -- (\xi,-0.10);
+				\draw[guide] (\xi,{\hmax*\amp}) -- (\xi,{\yc+\r+0.12});
+				\draw[dial] (\xi,\yc) circle (\r);
+				\draw[hand] (\xi,\yc) -- ++(\ang:{\r*\amp});
+				\fill (\xi,\yc) circle (0.03);
+			}
+
+		\node[lbl] at (\xc,{\yc-\r-0.55}) {$\psi:\mathbb{R}^3\longrightarrow\mathbb{C}$};
+	\end{scope}
+
+\end{tikzpicture}

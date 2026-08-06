@@ -1,0 +1,66 @@
+% Two complementary geometric properties of a conservative force.
+\begin{tikzpicture}[
+  x=1cm,
+  y=1cm,
+  line cap=round,
+  line join=round,
+  panel title/.style={font=\small\bfseries},
+  path curve/.style={
+    draw=noteblue,
+    line width=0.85pt,
+    -{Latex[length=2mm,width=1.35mm]},
+    shorten <=2.4pt,
+    shorten >=2.4pt
+  },
+  equipotential/.style={draw=notegray,line width=0.65pt},
+  vector arrow/.style={
+    line width=0.95pt,
+    -{Latex[length=2mm,width=1.4mm]}
+  },
+  force vector/.style={vector arrow,draw=noteblue},
+  gradient vector/.style={vector arrow,draw=orange!70!red!75!black}
+]
+  \path[use as bounding box] (0,0) rectangle (14.4,3.72);
+
+  % Left panel: the line integral depends only on the endpoints.
+  \node[panel title] at (3.3,3.48) {Path independence};
+  \coordinate (A) at (0.75,1.85);
+  \coordinate (B) at (5.95,1.85);
+  \draw[path curve]
+    (A) .. controls (1.95,2.95) and (4.75,2.95) .. (B);
+  \draw[path curve]
+    (A) .. controls (1.95,0.75) and (4.75,0.75) .. (B);
+  \fill (A) circle[radius=1.8pt] node[left=4pt] {$A$};
+  \fill (B) circle[radius=1.8pt] node[right=4pt] {$B$};
+  \node[font=\small,fill=white,inner sep=1pt] at (3.35,2.60) {$\mathcal C_1$};
+  \node[font=\small,fill=white,inner sep=1pt] at (3.35,1.10) {$\mathcal C_2$};
+  \node[font=\small] at (3.35,0.25) {$\displaystyle
+    \int_{\mathcal C_1}\!\mathbf F\!\cdot\! d\mathbf r
+    =
+    \int_{\mathcal C_2}\!\mathbf F\!\cdot\! d\mathbf r$};
+
+  \draw[notegray!35,line width=0.5pt] (7.20,0.20) -- (7.20,3.50);
+
+  % Right panel: the field geometry rotated counter-clockwise so that U increases upward.
+  \node[panel title] at (10.95,3.48) {Potential field};
+  \foreach \yline in {0.78,1.12,1.46,1.80,2.14,2.48}{
+    \draw[equipotential] (8.30,\yline) -- (13.60,\yline);
+  }
+
+  \node[font=\scriptsize,anchor=east] at (8.18,0.78) {$U_1$};
+  \node[font=\scriptsize,anchor=east] at (8.18,1.46) {$U_2$};
+  \node[font=\scriptsize,anchor=east] at (8.18,2.48) {$U_3$};
+  % Compact colour key and the direction of increasing potential.
+  \draw[orange!70!red!75!black,line width=0.95pt] (7.72,0.18) -- (8.25,0.18);
+  \node[font=\scriptsize,anchor=west] at (8.35,0.18) {$\nabla U$};
+  \draw[noteblue,line width=0.95pt] (9.15,0.18) -- (9.68,0.18);
+  \node[font=\scriptsize,anchor=west] at (9.78,0.18) {$\mathbf F$};
+  \node[font=\scriptsize] at (12.20,0.18) {$U_1<U_2<U_3$};
+
+  \coordinate (P) at (10.95,1.46);
+  \draw[gradient vector] (P) -- ++(0,0.64);
+  \draw[force vector] (P) -- ++(0,-0.64);
+  \draw[notegray,line width=0.45pt]
+    (11.09,1.46) -- (11.09,1.60) -- (10.95,1.60);
+  \fill (P) circle[radius=1.7pt];
+\end{tikzpicture}

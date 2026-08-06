@@ -1,0 +1,403 @@
+% !TeX program = pdflatex
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[british]{babel}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[
+  top=2.2cm,
+  bottom=2.2cm,
+  left=2.4cm,
+  right=2.4cm,
+  headheight=15pt
+]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\usepackage{needspace}
+\usepackage{tabularx}
+\usepackage{xcolor}
+
+\definecolor{cueblue}{HTML}{245A86}
+\definecolor{timegreen}{HTML}{2E6F58}
+\definecolor{softgray}{HTML}{F1F3F5}
+\definecolor{textgray}{HTML}{4B5563}
+
+\newcommand{\slidetime}[2]{%
+  {\small\sffamily\color{timegreen}\textbf{#1}\enspace(cumulative: #2)}%
+}
+
+\newcommand{\cue}[1]{%
+  \par\smallskip
+  \noindent
+  {\small\sffamily\color{cueblue}\textbf{STAGE CUE ---} #1}
+  \par\smallskip
+}
+
+\newcommand{\checkpoint}[1]{%
+  \par\smallskip
+  \noindent
+  \colorbox{softgray}{%
+    \parbox{0.965\linewidth}{%
+      \small\sffamily\color{textgray}\textbf{Timing checkpoint:} #1}}
+  \par\smallskip
+}
+
+\newenvironment{spoken}{%
+  \begin{list}{}{%
+    \setlength{\leftmargin}{1.1em}%
+    \setlength{\rightmargin}{1.1em}%
+    \setlength{\topsep}{2pt}%
+    \setlength{\partopsep}{0pt}%
+    \setlength{\parsep}{5pt}%
+    \setlength{\itemsep}{0pt}}%
+  \item\relax
+}{\end{list}}
+
+\newcommand{\slideheading}[4]{%
+  \needspace{10\baselineskip}
+  \section*{#1\enspace---\enspace#2}
+  \vspace{-0.7em}
+  \noindent\slidetime{#3}{#4}\par\smallskip
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small The Aharonov--Bohm Effect --- speaker script}
+\fancyhead[R]{\small 12-minute version}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+
+\setlist[itemize]{leftmargin=1.5em,itemsep=2pt,topsep=3pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries The Aharonov--Bohm Effect\par}
+  \vspace{4pt}
+  {\Large Speaker Script for the Quarto Presentation\par}
+  \vspace{8pt}
+  {\large Giancarmine Sparso\par}
+  \vspace{3pt}
+  {\small LMH Oxford Summer Programme 2026 --- PHYS02\par}
+\end{center}
+
+\vspace{8pt}
+
+\begin{center}
+\begin{tabularx}{0.92\textwidth}{@{}lXrr@{}}
+  \toprule
+  \textbf{Part} & \textbf{Slides} & \textbf{Time} & \textbf{Cumulative} \\
+  \midrule
+  Opening & Title & 0:15 & 0:15 \\
+  Foundations & Slides 1--6 & 4:10 & 4:25 \\
+  The effect itself & Slides 7--10 & 7:15 & 11:40 \\
+  Closing & Thank-you slide & 0:20 & 12:00 \\
+  \bottomrule
+\end{tabularx}
+\end{center}
+
+\smallskip
+\noindent
+\textbf{Delivery note.}
+The text in the indented blocks is spoken. Blue text contains actions or
+pauses and is not spoken. The timings include those actions. Aim for a calm
+technical pace; do not accelerate through the equations.
+
+\medskip
+\hrule
+
+\slideheading{Title slide}{The Aharonov--Bohm Effect}{0:15}{0:15}
+
+\cue{Pause briefly after the title appears; make eye contact before starting.}
+
+\begin{spoken}
+Good morning. We usually describe electromagnetism through electric and
+magnetic fields: local objects that push on charges. Today I want to show you
+a quantum effect in which that local picture is not the whole story.
+\end{spoken}
+
+
+\slideheading{Slide 1}{How do we observe a field?}{0:30}{0:45}
+
+\cue{Indicate the iron filings close to one pole, then trace the overall pattern.}
+
+\begin{spoken}
+This is the familiar way of making a magnetic field visible. Each iron filing
+acts as a small, local probe: it responds where the field is, and together the
+filings reveal a pattern. This captures the classical intuition that a field
+is known through the force it produces at each point. The question for this
+talk is whether local probes always reveal all the physically relevant
+information.
+\end{spoken}
+
+
+\slideheading{Slide 2}{From forces to potentials}{0:45}{1:30}
+
+\cue{Point first to \(\mathbf F=-\nabla U\), then to the division by \(m\).}
+
+\begin{spoken}
+To reach that question, let me first recall what a potential does. For a
+conservative force, the force is minus the gradient of a potential energy.
+The gradient is simply the slope: it tells us how rapidly the potential
+changes and in which direction.
+
+But potential energy belongs partly to the probe. Near Earth,
+\(U=mgy\), so doubling the mass doubles \(U\), although the gravitational
+field has not changed. Dividing by the mass leaves the gravitational
+potential \(\phi\), with \(\mathbf g=-\nabla\phi\). The potential stores
+information about the field independently of the object used to probe it.
+\end{spoken}
+
+
+\slideheading{Slide 3}{Only potential differences matter}{0:40}{2:10}
+
+\begin{spoken}
+There is already a redundancy here. The force depends on the slope of the
+potential, not on its absolute height. If I add the same constant \(C\)
+everywhere, its gradient is zero, so the field is unchanged.
+\end{spoken}
+
+\cue{Advance the fragment and let the constant-shift animation run for a few seconds.}
+
+\begin{spoken}
+The animation moves the whole potential vertically, but it never changes its
+slope. This is like changing the zero on a height scale: the numerical labels
+change, while every measurable trajectory stays the same.
+\end{spoken}
+
+
+\slideheading{Slide 4}{Different potentials can produce the same field}{0:25}{2:35}
+
+\begin{spoken}
+So \(V\) and \(V+C\) are not two different physical situations. They are two
+descriptions of the same field. That simple freedom to choose a reference
+level is the first example of what we mean by a gauge freedom. In
+electromagnetism, the freedom is much larger.
+\end{spoken}
+
+
+\slideheading{Slide 5}{Electromagnetism: more freedom, same fields}{1:00}{3:35}
+
+\cue{Follow the two field equations from left to right. Do not derive them.}
+
+\begin{spoken}
+Electromagnetism requires two potentials: the scalar potential \(V\) and the
+vector potential \(\mathbf A\). The electric field comes from a spatial
+change in \(V\) and a time change in \(\mathbf A\); the magnetic field is the
+curl of \(\mathbf A\).
+
+Now choose any scalar function \(\chi(\mathbf r,t)\). If we add its gradient
+to \(\mathbf A\), while subtracting its time derivative from \(V\), the extra
+terms cancel in both field equations.
+\end{spoken}
+
+\cue{Advance both fragments: first the unchanged fields, then the definition.}
+
+\begin{spoken}
+Therefore \(\mathbf E\) and \(\mathbf B\) are exactly unchanged. This is a
+gauge transformation. The value of a potential at one point is not itself an
+observable; many pairs of potentials represent the same electromagnetic
+fields. Classically, that makes the potentials look like useful bookkeeping
+rather than physical actors.
+\end{spoken}
+
+
+\slideheading{Slide 6}{Quantum mechanics uses the potentials directly}{0:50}{4:25}
+
+\cue{Indicate only the two highlighted quantities \(\mathbf A\) and \(V\).}
+
+\begin{spoken}
+Quantum mechanics changes the emphasis. A particle is described by a
+wavefunction, and its evolution is generated by the Hamiltonian in
+Schrödinger's equation. For a particle with charge \(q\), the Hamiltonian
+contains \(V\) and \(\mathbf A\) directly, in the combination shown here.
+
+This does not mean that a gauge-dependent value suddenly becomes measurable.
+Under a gauge transformation, the wavefunction changes its phase as well, and
+all probabilities remain unchanged. But it does mean that the potentials can
+write information into a \emph{relative phase}. Relative phase is observable
+through interference, and that is the opening exploited by Aharonov and Bohm.
+\end{spoken}
+
+\checkpoint{You should leave the foundations at about \textbf{4:25}. If you
+are late, omit the final two sentences on Slide 4; do not cut the setup or the
+animation.}
+
+
+\slideheading{Slide 7}{Aharonov's intuition}{1:10}{5:35}
+
+\begin{spoken}
+An overall phase of a wavefunction cannot be measured, just as rotating every
+hand on a set of identical clocks by the same angle changes no comparison.
+But split the wave into two branches and recombine them, and the difference
+between their phases controls whether they reinforce or cancel.
+
+Aharonov and Bohm focused on the relation
+\(\mathbf B=\nabla\times\mathbf A\). Taking a derivative can erase global
+information. In an ordinary region that missing information can be removed by
+a gauge choice. But if the accessible region has a hole, a loop around that
+hole cannot be shrunk to a point. Then \(\mathbf A\) cannot be gauged away
+everywhere around the loop, even when \(\mathbf B\) vanishes at every point on
+it. What remains is the circulation of \(\mathbf A\) around the complete loop.
+\end{spoken}
+
+\cue{Advance the question fragment; pause for one beat.}
+
+\begin{spoken}
+So their question was: can a quantum phase recover precisely this information
+that the local field has lost?
+\end{spoken}
+
+
+\slideheading{Slide 8}{The magnetic Aharonov--Bohm setup}{2:25}{8:00}
+
+\cue{Trace the apparatus in order: \(A\), upper and lower paths, the shielded
+solenoid, then \(F\).}
+
+\begin{spoken}
+Here is the magnetic arrangement. At \(A\), a coherent electron beam is split
+into two wave packets. One passes above the solenoid, through \(B\); the other
+passes below it, through \(C\). The solenoid is shielded, and the two packets
+recombine at \(F\), where they form an interference pattern.
+
+The crucial separation is this: the magnetic flux \(\Phi_B\) is confined
+inside the solenoid, while the electrons travel only outside. Along both
+paths, \(\mathbf B=0\). The magnetic Lorentz force
+\(q\mathbf v\times\mathbf B\) is therefore zero, so neither packet is
+accelerated. Classically, two static experiments with different hidden fluxes
+should therefore give the same result.
+
+Quantum mechanically, each branch accumulates a phase
+\[
+  \frac{q}{\hbar}\int \mathbf A\cdot d\mathbf r.
+\]
+The phase assigned to either open path depends on the gauge, so it is not an
+observable by itself. At \(F\), however, we subtract the two phases. The two
+open paths then form one closed loop, and the difference becomes
+\[
+  \Delta\varphi
+  =\frac{q}{\hbar}\oint_C \mathbf A\cdot d\mathbf r.
+\]
+The integral of a gradient around a closed loop is zero, so this quantity is
+gauge invariant. By Stokes' theorem, the circulation equals the magnetic flux
+enclosed by the loop. Therefore
+\[
+  \Delta\varphi=\frac{q\Phi_B}{\hbar}.
+\]
+\end{spoken}
+
+\cue{Point to the final displayed equation, then to the interference region at \(F\).}
+
+\begin{spoken}
+This is the effect in one line. The electrons encounter no magnetic field and
+feel no force, yet changing an inaccessible enclosed flux changes their
+relative phase. That phase shifts the interference fringes rigidly: it changes
+their position, not their spacing or their envelope. For an electron, the
+charge only fixes the direction of the shift; the existence of the shift is
+the central result.
+\end{spoken}
+
+\checkpoint{Reach the interactive animation at about \textbf{8:00}. This is
+the main explanatory checkpoint of the talk.}
+
+
+\slideheading{Slide 9}{The Aharonov--Bohm effect in motion}{2:10}{10:10}
+
+\cue{Select \texttt{present} and set \(\Phi/\Phi_0=0\). Point to the two green
+arms, the amber solenoid, the red circulation lines, and the screen.}
+
+\begin{spoken}
+This animation separates the ingredients. Treat each slider position as a
+separate static experiment. The green waves follow the two electron paths.
+Notice that they have exactly the same wavelength in both arms, because no
+force changes the electrons' momentum. The magnetic field is confined to the
+amber solenoid. The red circles represent the vector potential outside it:
+their curl is zero along the paths, but their circulation around the excluded
+region need not be zero.
+\end{spoken}
+
+\cue{Press \(\tfrac12\), or move the slider slowly to
+\(\Phi/\Phi_0=\tfrac12\). Use the dashed screen markers as the reference.}
+
+\begin{spoken}
+It is useful to express the flux in units
+\(\Phi_0=h/e\). Then the magnitude of the electron phase is
+\[
+  |\Delta\varphi|=2\pi\frac{\Phi_B}{\Phi_0}.
+\]
+At half a flux quantum, the relative phase is \(\pi\). The maxima become
+minima, and the entire fringe pattern moves by half a spacing. The dashed
+marks show where the maxima were at zero flux.
+\end{spoken}
+
+\cue{Press \(1\). Pause just long enough for the audience to compare the
+pattern with the dashed reference.}
+
+\begin{spoken}
+At one flux quantum, the phase is \(2\pi\). That is one complete phase cycle,
+so the interference pattern is physically identical to the pattern at zero
+flux. The response is periodic in the enclosed flux.
+\end{spoken}
+
+\cue{Select \texttt{collect}, then press \(\tfrac12\). Let the dots accumulate
+while delivering the next paragraph; do not wait in silence for a full screen.}
+
+\begin{spoken}
+The individual electron impacts are random, but as they accumulate, the
+shifted interference fringes emerge statistically. Nothing here says that a
+force bends the electron paths or changes their energy. The flux changes the
+relative phase, and the relative phase changes the interference probability.
+That distinction is the essence of the Aharonov--Bohm effect.
+\end{spoken}
+
+
+\slideheading{Slide 10}{Tonomura's toroidal experiment}{1:30}{11:40}
+
+\cue{Indicate the closed toroid first, then the electron paths and the shifted
+fringes in the hole.}
+
+\begin{spoken}
+There is an obvious experimental objection. A real straight solenoid is
+finite, so a small magnetic field may leak from its ends. Perhaps that stray
+field, rather than the enclosed flux, acts locally on the electrons.
+
+Tonomura and collaborators closed this loophole in 1986. They replaced the
+straight solenoid with a microscopic toroidal magnet: a closed ring with no
+ends. A superconducting niobium layer confined the magnetic flux, and a copper
+coating prevented the electron wave from entering the magnet. One part of the
+electron wave passed through the hole and the other outside, while both
+remained in regions where \(\mathbf B=0\).
+
+The superconducting flux is quantised in units of \(h/2e\). An odd number of
+these units gives an electron phase difference of \(\pi\); an even number
+gives zero modulo \(2\pi\). In this schematic, the dashed guides make the
+odd case visible as a shift by exactly half a fringe spacing.
+\end{spoken}
+
+\cue{End by looking back at the audience, not at the equation.}
+
+\begin{spoken}
+The electrons never cross the magnetic field, but their interference pattern
+still records the flux it encloses. The stray-field explanation is removed,
+and the phase shift remains.
+\end{spoken}
+
+
+\slideheading{Closing}{Thank you for your attention}{0:20}{12:00}
+
+\begin{spoken}
+So the effect does not make a particular gauge, or the value of
+\(\mathbf A\) at one point, observable. What is observable is the
+gauge-invariant phase around a closed loop. Quantum interference can therefore
+detect enclosed electromagnetic flux even when the field vanishes everywhere
+along the particle's path. Thank you.
+\end{spoken}
+
+\checkpoint{Target finish: \textbf{12:00}. Leave the Sources slide visible
+during questions if a reference is requested.}
+
+\end{document}

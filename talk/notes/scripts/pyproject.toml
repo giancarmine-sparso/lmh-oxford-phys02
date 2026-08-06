@@ -1,0 +1,14 @@
+[project]
+name = "lmh-oxford-phys02-notes-figures"
+version = "0.1.0"
+description = "Figure-generation scripts for the written Aharonov-Bohm notes."
+license = "MIT"
+authors = [{ name = "Giancarmine Sparso" }]
+requires-python = ">=3.14"
+dependencies = [
+    "matplotlib>=3.11.1",
+    "numpy>=2.5.1",
+]
+
+[project.urls]
+Repository = "https://github.com/giancarmine-sparso/lmh-oxford-phys02"

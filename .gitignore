@@ -1,0 +1,63 @@
+# Local development tools
+.agents/
+.codex/
+.claude/
+
+# Operating systems and editors
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+.direnv/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Rust
+target/
+
+# Quarto and Manim
+.quarto/
+*_files/
+/talk/dist/
+/talk/manim/media/
+
+# LaTeX
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*-SAVE-ERROR
+/talk/notes/*.pdf
+/poster/graphics/build/
+
+# Project outputs and local datasets
+/release/
+*.root
+/poster/atlas-analysis/data/
+/poster/atlas-analysis/references/
+/poster/monte-carlo-simulation/output/events.csv
