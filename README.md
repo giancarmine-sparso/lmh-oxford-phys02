@@ -8,10 +8,20 @@ and small simulations used to build the final visuals.
 
 ## Projects
 
-| Aharonov–Bohm talk | ATLAS Open Data poster |
-| --- | --- |
-| [![Title slide from the Aharonov–Bohm talk][talk-preview]][talk-html] | [![Finding the W in the Noise poster][poster-preview]][poster-pdf] |
-| A twelve-minute Quarto and Reveal.js presentation that moves from classical fields to gauge freedom, quantum phase and the Tonomura experiment. [Interactive talk][talk-html] · [PDF][talk-pdf] · [Source](talk/) | A data-driven study of $W \to e\nu$ candidates using transverse mass and an ABCD background estimate. [Poster PDF][poster-pdf] · [Source](poster/) |
+### Aharonov–Bohm talk
+
+[![Title slide from the Aharonov–Bohm talk][talk-preview]](talk/)
+
+A twelve-minute Quarto and Reveal.js presentation that moves from classical
+fields to gauge freedom, quantum phase and the Tonomura experiment.
+[Source](talk/)
+
+### ATLAS Open Data poster
+
+[![Finding the W in the Noise poster][poster-preview]](poster/)
+
+A data-driven study of $W \to e\nu$ candidates using transverse mass and an
+ABCD background estimate. [Source](poster/)
 
 ## Reproduce the release
 
@@ -56,6 +66,3 @@ external assets retain their original terms; see
 
 [talk-preview]: assets/previews/talk.png
 [poster-preview]: assets/previews/poster.png
-[talk-html]: https://github.com/giancarmine-sparso/lmh-oxford-phys02/releases/latest/download/LMH-PHYS02-Aharonov-Bohm-talk.html
-[talk-pdf]: https://github.com/giancarmine-sparso/lmh-oxford-phys02/releases/latest/download/LMH-PHYS02-Aharonov-Bohm-talk.pdf
-[poster-pdf]: https://github.com/giancarmine-sparso/lmh-oxford-phys02/releases/latest/download/LMH-PHYS02-Finding-the-W-in-the-Noise-poster.pdf
