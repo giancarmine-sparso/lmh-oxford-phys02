@@ -30,12 +30,3 @@ density in GeV$^{-1}$, so `sum(density * bin_width)` is one.
 
 Use `cargo run -- --help` and `uv run python plot.py --help` to inspect the
 available options.
-
-## Tests
-
-```bash
-cargo test --locked
-```
-
-The Rust tests cover argument parsing, four-vector invariants, conservation
-laws, deterministic sampling and histogram normalisation.

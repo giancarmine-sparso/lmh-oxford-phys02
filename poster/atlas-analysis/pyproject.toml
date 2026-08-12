@@ -14,14 +14,5 @@ dependencies = [
     "uproot>=5.7.5",
 ]
 
-[dependency-groups]
-dev = [
-    "pytest>=8.4.2",
-]
-
 [project.urls]
 Repository = "https://github.com/giancarmine-sparso/lmh-oxford-phys02"
-
-[tool.pytest.ini_options]
-pythonpath = ["scripts"]
-testpaths = ["tests"]

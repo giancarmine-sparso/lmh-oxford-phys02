@@ -12,7 +12,7 @@ The environment requires Python 3.14 or later and
 
 ```bash
 cd poster/atlas-analysis
-uv sync --group dev
+uv sync
 ```
 
 The analysis uses `data_A.1lep.root` from the
@@ -58,11 +58,3 @@ The ABCD regions use isolation below 0.10 or at least 0.20, and $E_T^\text{miss}
 - [Normalised comparison](plots/final/mt_normalized_comparison.png)
 
 Matching PDF figures are kept for the poster build.
-
-## Tests
-
-```bash
-uv run pytest
-```
-
-The tests are self-contained and do not require the ROOT dataset.
