@@ -5,8 +5,8 @@ Oxford PHYS02. The deck uses a short interactive simulation and an animation
 to explain why electromagnetic potentials can have observable consequences in
 quantum mechanics.
 
-[Open the interactive talk](https://github.com/giancarmine-sparso/lmh-oxford-phys02/releases/latest/download/LMH-PHYS02-Aharonov-Bohm-talk.html)
-or [download the PDF](https://github.com/giancarmine-sparso/lmh-oxford-phys02/releases/latest/download/LMH-PHYS02-Aharonov-Bohm-talk.pdf).
+[Open the interactive talk](https://giancarmine-sparso.github.io/lmh-oxford-phys02/)
+or [download the PDF](https://github.com/giancarmine-sparso/lmh-oxford-phys02/releases/download/v1.0.0/LMH-PHYS02-Aharonov-Bohm-talk.pdf).
 
 ## Build the deck
 
