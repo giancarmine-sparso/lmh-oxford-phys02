@@ -1,0 +1,49 @@
+name: Publish interactive talk
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/publish-talk.yml"
+      - "references/**"
+      - "talk/**"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/publish-talk.yml"
+      - "references/**"
+      - "talk/**"
+
+concurrency:
+  group: publish-interactive-talk
+  cancel-in-progress: true
+
+jobs:
+  render-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.10.17
+
+      - name: Render talk
+        working-directory: talk
+        run: quarto render index.qmd
+
+      - name: Publish to GitHub Pages
+        if: github.event_name != 'pull_request'
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+          path: talk
+          render: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

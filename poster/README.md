@@ -5,7 +5,7 @@ analysis used to produce its plots. The poster follows reconstructed
 $W \to e\nu$ candidates from event selection and transverse mass to a
 data-driven ABCD background estimate.
 
-[Download the final poster](https://github.com/giancarmine-sparso/lmh-oxford-phys02/releases/latest/download/LMH-PHYS02-Finding-the-W-in-the-Noise-poster.pdf).
+[Download the final poster](https://github.com/giancarmine-sparso/lmh-oxford-phys02/releases/download/v1.0.0/LMH-PHYS02-Finding-the-W-in-the-Noise-poster.pdf).
 
 ## Build the poster
 
