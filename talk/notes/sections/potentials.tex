@@ -2,40 +2,40 @@
 \section{Potential energy and potentials}
 
 A force is called conservative if the work it performs between two points is
-independent of the path followed. Equivalently
+independent of the path followed. Equivalently,
 \[
-	\oint F \cdot dr = 0
+	\oint F \cdot dr = 0.
 \]
-infinitesimally
+Infinitesimally,
 \[
-	\delta W = F \cdot dr
+	\delta W = F \cdot dr.
 \]
-for the work-energy theorem we have that the work performed is equal to the variation of
+By the work-energy theorem we have that the work performed is equal to the variation of
 the kinetic energy \(K\),
 \[
-	\delta W = dK
+	\delta W = dK.
 \]
 We want to introduce a quantity \(U\) by requiring \(K + U\) to be conserved.
-Since the work done by a conservative force, depends
+Since the work done by a conservative force depends
 only on the endpoints, it can be represented by a scalar function,
 \[
-	dK + dU = 0
+	dK + dU = 0.
 \]
-it follows
+It follows that
 \[
-	dU = -dK = - \delta W = - F \cdot dr
+	dU = -dK = - \delta W = - F \cdot dr.
 \]
 Since \(U\) is a scalar function of the position, its differential is
 \[
-	dU = \nabla U \cdot dr
+	dU = \nabla U \cdot dr,
 \]
-Where \(\nabla\), read as "nabla", is the gradient operator:
+where \(\nabla\), read as ``nabla'', is the gradient operator:
 \[
 	\nabla U = \grad{U}.
 \]
-comparing the two expressions for \(dU\) we obtain:
+Comparing the two expressions for \(dU\) we obtain:
 \[
-	(\nabla U + F) \cdot dr = 0
+	(\nabla U + F) \cdot dr = 0.
 \]
 since this holds for every infinitesimal displacement \(dr\),
 \[
@@ -52,7 +52,7 @@ since this holds for every infinitesimal displacement \(dr\),
 To visualize the gradient let's consider a body of mass \(m\) in a gravitational field.
 If \(y\) denotes its height, its gravitational potential energy is
 \[
-	U(y) = mg y
+	U(y) = mg y.
 \]
 \enlargethispage{1cm}
 Its gradient is
@@ -67,7 +67,7 @@ Its gradient is
 	\label{fig:gravitational-potential-gradient}
 \end{figure}
 
-The gradient, as shown in \cref{fig:gravitational-potential-gradient}
+The gradient, as shown in \cref{fig:gravitational-potential-gradient},
 points upward, in the direction in which the potential energy increases most
 rapidly. The gravitational force is
 \[
@@ -83,7 +83,7 @@ body used to probe it.
 
 Near the surface of the Earth, for instance,
 \[
-	U(y) = mgy
+	U(y) = mgy.
 \]
 At the same height \(y\), two bodies of different mass have different potential energies.
 This does not mean that they experience different gravitational fields: the field is
@@ -103,7 +103,7 @@ in the gravitational case,
 Here \(\phi\) carries the information about the field, while \(m\) the information
 about the probe. Taking the gradient
 \[
-	F = - \nabla U = -m \nabla \phi \implies g \equiv \frac{F}{m} = - \nabla \phi
+	F = - \nabla U = -m \nabla \phi \implies g \equiv \frac{F}{m} = - \nabla \phi,
 \]
 so the potential stands to the field exactly as the potential energy stands to the
 force.
@@ -121,11 +121,11 @@ Notice now that \(U\) never enters the physics by itself: it enters only
 through its gradient. This has an immediate consequence. If \(c\) is any constant
 and we replace
 \[
-	U(r) \mapsto U(r) + c
+	U(r) \mapsto U(r) + c,
 \]
 then, since differentiation annihilates constants, \(\nabla c = 0\) and
 \[
-	\nabla (U + c) = \nabla U
+	\nabla (U + c) = \nabla U.
 \]
 The force is unchanged, and so is every trajectory it produces. The same holds for
 the potential, \(\phi \mapsto \phi + c/m\). Two potential energies that differ by a

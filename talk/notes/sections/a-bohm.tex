@@ -24,22 +24,22 @@ Suppose \(B\) is known throughout a region \(\mathcal R\), and let
 	\nabla \times (A' - A) = 0,
 \]
 so \(A' - A\) is curl-free, the curl is \(0\).
-A curl-free field is the gradient of a single-valued scalar function,
-but this is not automatic, it has to be built. Define
+One would like a curl-free field to be the gradient of a single-valued scalar function,
+but this is not automatic; it has to be built. Define
 \[
-	\chi(r) = \int_{r_o}^r (A' - A) \cdot dr
+	\chi(r) = \int_{r_0}^r (A' - A) \cdot dr'.
 \]
-for this to define a function at all, the integral must not depend
+For this to define a function at all, the integral must not depend
 on which path we take from \(r_0\) to \(r\). Take two such paths:
 together they form a closed loop \(C\), and path-independence is the
 same as asking
 \[
-	\oint_C (A' - A) \cdot dr = 0
+	\oint_C (A' - A) \cdot dr = 0.
 \]
-by Stokes' theorem this integral equals the flux of the curl through any
+By Stokes' theorem this integral equals the flux of the curl through any
 surface bounded by \(C\), and the curl vanishes. So the answer is zero,
-and \(\chi\) is well defined. The catch is in the "any surface bounded
-by \(C\)": that surface must lie inside \(\mathcal{R}\). If \(\mathcal{R}\)
+and \(\chi\) is well defined. The catch is in the ``any surface bounded
+by \(C\)'': that surface must lie inside \(\mathcal{R}\). If \(\mathcal{R}\)
 is simply connected (a region is simply connected if every closed loop
 inside it can be shrunk continuously to a point without ever leaving the
 region) it always does, and the argument goes through. If \(\mathcal{R}\)
@@ -49,7 +49,7 @@ Stokes no longer applies, and the conclusion genuinely fails.
 
 So on a multiply connected region, knowing \(B\) does not determine \(A\)
 up to a gauge transformation. What survives the differentiation is
-a gauge invariant quantity that we have already met, the circulation
+a gauge-invariant quantity that we have already met, the circulation
 \[
 	\oint_C A \cdot dr = \Phi_B,
 \]
@@ -75,11 +75,11 @@ the argument.
 The quantity \(\Phi_B\) is itself constructed from the field: by Stokes'
 theorem it is the flux of \(B\) through any surface bounded by \(C\).
 One could therefore insist that no new entity is needed. Aharonov and Bohm
-accept the algebra but reject the interpretation, the flux resides in a
+accept the algebra but reject the interpretation: the flux resides in a
 region the electron never enters, and in a theory of local interaction
 a field cannot act where it is absent. Either the field acts non-locally,
-or the potentials are physically effective in the field free region.
-The effect does not decide which language is preferable, it shows that the
+or the potentials are physically effective in the field-free region.
+The effect does not decide which language is preferable; it shows that the
 field description alone, taken locally, is incomplete.
 
 
@@ -88,23 +88,23 @@ along a path. With the minimal coupling Hamiltonian
 \[
 	\hat H = \frac{1}{2m} (\hat p - qA)^2 + qV,
 \]
-a solution in a field free region can be written as the field free solution
+a solution in a field-free region can be written as the field-free solution
 multiplied by a phase factor,
 \[
-	\psi(r) = \psi_0(r) \; \mathrm{exp} \left[ \frac{iq}{\hbar} \int^r
+	\psi(r) = \psi_0(r) \; \exp \left[ \frac{iq}{\hbar} \int^r
 		A \cdot dr'
 		\right].
 \]
 If the region is simply connected the integral depends only on the endpoint,
-the phase is single valued, and the potential has been removed by a gauge
+the phase is single-valued, and the potential has been removed by a gauge
 transformation. If the region encircles a hole the integral depends on
-the path, and the phase accumulated along two paths on opposite sides
+the path, and the phases accumulated along two paths on opposite sides
 of the hole differ by
 \[
 	\Delta \delta = \frac{q}{\hbar} \oint_C A \cdot dr = \frac{q \Phi_B}
 	{\hbar}.
 \]
-the loss of information reappears as a relative phase.
+The loss of information reappears as a relative phase.
 
 
 \section{The time-dependent scalar arrangement}
@@ -148,9 +148,9 @@ solves the problem. Indeed
 where the last step uses \(\partial S / \partial t = qV(t)\) and the
 fact that \(S\) does not depend on position, so that the phase factor
 commutes with the kinetic term. This spatial uniformity is the whole
-point, \(\nabla V = 0\) means no force, and it is precisely what allows
+point: \(\nabla V = 0\) means no force, and it is precisely what allows
 the potential to act as a pure, position-independent phase. Taken by itself
-the result is unremarkable, a single wavefunction multiplied by a global
+the result is unremarkable: a single wavefunction multiplied by a global
 phase describes the same physical state.
 
 
@@ -221,8 +221,8 @@ has nonvanishing flux, while the field vanishes on the worldlines themselves.
 
 
 \section{The magnetic Aharonov--Bohm arrangement}
-The first arrangement proposed in the original paper isolates
-exactly in section 2.1. A coherent electron beam is split into
+The second arrangement proposed in the original paper isolates
+exactly the situation of \cref{sec:lost-information}. A coherent electron beam is split into
 two parts which pass on opposite sides of a long, tightly wound
 solenoid and are recombined in an interference region.
 \begin{figure}[H]
@@ -239,23 +239,23 @@ solenoid and are recombined in an interference region.
 \end{figure}
 \vspace{-11pt} \enlargethispage{0.5cm}
 The solenoid confines the magnetic field to its interior;
-outside \(B \approx 0\), while \(A\) cannot vanish, since every
+outside \(B \approx 0\), while \(A\) cannot vanish identically, since every
 loop enclosing the axis must return the same flux. To exclude
 any contact between the electrons and the field region, the
 solenoid is screened from the beam, in the original proposal
 by a thin plate casting a shadow.
 Each partial beam travels in a simply connected region, so the
-phase along it is well defined; the two region
+phase along it is well defined; the two regions
 together enclose the flux. The relative phase at recombination is
 \[
 	\Delta \delta = \frac{q \Phi_B}{\hbar} = - \frac{e \Phi_B}{\hbar}
 \]
 for an electron of charge \(q = -e\). The observable consequence
-is a rigid displacement of the interference patter, with the
-fringe spacing unchanged, periodi in the enclosed flux with
+is a rigid displacement of the interference pattern, with the
+fringe spacing unchanged, periodic in the enclosed flux with
 period
 \[
-	\Phi_0 = \frac{h}{e} \approx 4.14 \times 10^{-15} \, \mathrm{Wb}
+	\Phi_0 = \frac{h}{e} \approx 4.14 \times 10^{-15} \, \mathrm{Wb}.
 \]
 \vspace{-15pt}
 \begin{figure}[H]
@@ -285,7 +285,7 @@ potential in a field-free region, but to the electrons interacting with this
 residual magnetic field along their paths.
 
 
-The experiment that closed the loophole was performed by Tonomura ad
+The experiment that closed the loophole was performed by Tonomura and
 collaborators in 1986 \cite{tonomuraEvidenceAharonovBohmEffect1986}. The
 idea is to replace the solenoid with a geometry that has no ends from
 which the field can leak, a toroid (a ring). The sample is a microscopic
@@ -296,7 +296,7 @@ the other part passes outside it. The two partial waves enclose the magnetic
 flux \(\Phi_B\) trapped in the ring, so their relative phase at recombination
 is
 \[
-	\Delta \varphi \; = \; \frac{q}{\hbar} \oint_C A \cdot dt \; = \;
+	\Delta \delta \; = \; \frac{q}{\hbar} \oint_C A \cdot dr \; = \;
 	\frac{q\, \Phi_B}{\hbar},
 \]
 exactly as in the solenoid case, while neither wave ever travels through a
@@ -316,16 +316,16 @@ The superconducting layer has a second consequence, which turns a precaution
 into a signature. The magnetic flux trapped inside a superconducting ring
 cannot take arbitrary values: it is quantized in integer multiples of the
 superconducting flux quantum $h/2e$.\footnote{The elementary flux quantum
-	associated with a charge $q$ is $\Phi_0 = h/q$. In a superconductor the charge
+	associated with a charge $q$ is $\Phi_0 = h/|q|$. In a superconductor the charge
 	carriers are Cooper pairs of charge $2e$, so the trapped flux is quantized in
 	units of $h/2e$, half the value one would associate with a single electron.}
 Setting $\Phi_B = n\,h/2e$ in the phase difference, with $q = -e$ for the
 electron, gives
 \[
-	|\Delta\varphi| \;=\; \frac{e}{\hbar}\,n\,\frac{h}{2e} \;=\; n\pi .
+	|\Delta\delta| \;=\; \frac{e}{\hbar}\,n\,\frac{h}{2e} \;=\; n\pi .
 \]
 The predicted relative phase between the wave through the hole and the wave
-outside is therefore either $0$ (for even $n$) or $\pi$ (for odd $n$), and
+outside is therefore, modulo $2\pi$, either $0$ (for even $n$) or $\pi$ (for odd $n$), and
 nothing in between. A phase of $\pi$ corresponds to a displacement of the
 interference fringes inside the hole by exactly half a fringe spacing with
 respect to the fringes outside.

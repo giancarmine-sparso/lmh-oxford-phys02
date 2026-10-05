@@ -6,7 +6,7 @@ written using a scalar function
 \[
 	F = - \grad U.
 \]
-Now we ask if the same contraption can fully describe the electromagnetic force.
+Now we ask if the same construction can fully describe the electromagnetic force.
 
 The complete electromagnetic force is given by the Lorentz force
 \[
@@ -15,7 +15,7 @@ The complete electromagnetic force is given by the Lorentz force
 While the electrostatic contribution depends only on position, the magnetic
 contribution depends explicitly on the velocity of the charged particle:
 \[
-	F_B = q v \times B.
+	F_B = q v \times B,
 \]
 and therefore cannot be obtained from the gradient of a potential energy depending
 only on position. A scalar potential alone is no longer sufficient.
@@ -42,7 +42,7 @@ The divergence of a vector field $\vec{F}=(F_x,F_y,F_z)$ is defined as the dot p
 	+
 	\frac{\partial F_y}{\partial y}
 	+
-	\frac{\partial F_z}{\partial z}
+	\frac{\partial F_z}{\partial z}.
 \]
 It returns a scalar. It measures how much the field locally ``flows out of'' or ``flows into'' a point. If the divergence is positive, the point behaves like a source; if it is negative, like a sink; if it is zero, there is no net local outgoing flux.
 
@@ -61,13 +61,13 @@ The curl of $\vec{F}$ is defined as the cross product:
 	\frac{\partial F_y}{\partial x}
 	-
 	\frac{\partial F_x}{\partial y}
-	\right)
+	\right).
 \]
 Notice how the same rule for the cross product between two vectors was used:
 \[
 	(a,b,c)\times(d,e,f)
 	=
-	(bf-ce,\,cd-af,\,ae-bd)
+	(bf-ce,\,cd-af,\,ae-bd),
 \]
 and considering:
 \[
@@ -79,26 +79,25 @@ and considering:
 	\frac{\partial}{\partial x},
 	\frac{\partial}{\partial y},
 	\frac{\partial}{\partial z}
-	\right)
+	\right).
 \]
 It returns a vector and measures the local tendency of the field to generate a rotation. In other words, the curl tells us whether, in an infinitesimal neighbourhood of a point, the field tends to make a small object placed there rotate.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.72\textwidth]{scripts/divergence_curl.pdf}
-	\caption{Vector fields and their local responses. The radial field expands the
-		material element and produces the scalar \(\nabla\!\cdot\!\mathbf F=2\);
-		reversing its arrows gives a sink and negative divergence. The rotational
-		field preserves area while producing the vector
-		\(\nabla\!\times\!\mathbf F=2\hat{\mathbf z}\). In each case the
-		complementary operator vanishes.}
+	\input{figures/divergence_curl}
+	\caption{Two vector fields in the \(xy\)-plane, with \(x\) to the right,
+		\(y\) upwards and \(z\) out of the page. Dashed and solid outlines show a
+		small material element before and after transport by the field.
+		(a) The radial flow expands the element.
+		(b) The rotational flow turns it anticlockwise without changing its area.}
 	\label{fig:divergence-curl}
 \end{figure}
 
 Divergence and curl therefore describe two different aspects of a vector field: divergence measures its ``radial'' behaviour, that is, how much the field locally expands or contracts; curl instead measures its ``circular'' behaviour, that is, how much the field tends to rotate. This distinction is illustrated in \cref{fig:divergence-curl}.
 
 
-\subsection{The magnetic potential vector}
+\subsection{The magnetic vector potential}
 One of Maxwell's equations states that the magnetic field is divergence-free:
 \[
 	\nabla \cdot B = 0.
@@ -135,7 +134,7 @@ infinitesimal limit,
 \[
 	(\nabla \times A) \cdot \hat{n} =
 	\lim_{S \to 0} \frac{1}{S}
-	\oint_{\partial S} A \cdot dr
+	\oint_{\partial S} A \cdot dr.
 \]
 The relation \(B = \nabla \times A\) means that the magnetic field
 represents the local circulation density of the vector potential.
@@ -157,7 +156,7 @@ Using \(B = \nabla \times A\),
 The surface integral on the right-hand side is the magnetic flux
 through \(S\),
 \[
-	\Phi_B \equiv \int_S B \cdot dS = \oint_C A \cdot dr
+	\Phi_B \equiv \int_S B \cdot dS = \oint_C A \cdot dr,
 \]
 so the circulation of the vector potential around a closed curve is
 equal to the magnetic flux enclosed by that curve.
@@ -169,7 +168,7 @@ through
 \[
 	E = - \nabla V.
 \]
-This relation, however, is not sufficient when the magnetic field varies, in
+This relation, however, is not sufficient when the magnetic field varies in
 time. In the general electromagnetic case, the electric and magnetic fields
 must be described together through the scalar potential \(V\) and the vector
 potential \(A\).
@@ -179,19 +178,19 @@ Faraday's law states that
 	\nabla \times E =
 	- \frac{\partial B}{\partial t}.
 \]
-using \(B = \nabla \times A\), we obtain
+Using \(B = \nabla \times A\), we obtain
 \[
 	\nabla \times E = - \frac{\partial}{\partial t} (\nabla \times A) =
-	- \nabla \times \frac{\partial A}{\partial t}
+	- \nabla \times \frac{\partial A}{\partial t}.
 \]
 Therefore,
 \[
 	\nabla \times
 	\left(
 	E + \frac{\partial A}{\partial t}
-	\right) = 0
+	\right) = 0.
 \]
-a curl-free vector field can locally be expressed as the gradient of a
+A curl-free vector field can locally be expressed as the gradient of a
 scalar function. Introducing the scalar potential \(V\), we write
 \[
 	E + \frac{\partial A}{\partial t} =
@@ -201,14 +200,13 @@ and hence
 \[
 	E = - \nabla V - \frac{\partial A}{\partial t}.
 \]
-the electromagnetic fields are therefore related to the potentials by
+The electromagnetic fields are therefore related to the potentials by
 \[
 	E = - \nabla V - \frac{\partial A}{\partial t}, \qquad
-	B = \nabla \times A
+	B = \nabla \times A.
 \]
 In the static limit, \(\partial A/ \partial t = 0\), and the familiar
 electrostatic relation \(E = - \nabla V\) is recovered.
-
 
 
 

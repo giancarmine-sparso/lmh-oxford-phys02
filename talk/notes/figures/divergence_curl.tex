@@ -1,0 +1,95 @@
+% Two planar fields and a material element transported by their flow.
+% Native size: 11.52 cm wide, with 9 pt labels in the 11 pt notes.
+\begin{tikzpicture}[
+  x=1cm,
+  y=1cm,
+  font=\footnotesize,
+  field arrow/.style={
+    draw=black,
+    line width=0.5pt,
+    line cap=round,
+    -{Latex[length=1.4mm,width=1.05mm]}
+  },
+  initial element/.style={
+    draw=black,
+    line width=0.5pt,
+    dash pattern=on 2pt off 1.8pt,
+    line cap=butt,
+    line join=miter
+  },
+  final element/.style={
+    draw=black,
+    line width=0.6pt,
+    line join=miter
+  },
+  panel title/.style={font=\small,inner sep=0pt},
+  field label/.style={inner sep=0pt},
+  result label/.style={inner sep=0pt}
+]
+  \path[use as bounding box] (0,0) rectangle (11.52,6.0);
+
+  % Preserve the examples and the flow interval of the original figure.
+  % PGF uses degrees for angles; the rigid rotation is 0.32 radians.
+  \def\dcFlowTime{0.32}
+  \def\dcHalfSize{0.23}
+  \pgfmathsetmacro{\dcExpandedHalfSize}{\dcHalfSize*exp(\dcFlowTime)}
+  \pgfmathsetmacro{\dcRotationAngle}{\dcFlowTime*180/pi}
+
+  % (a) F=(x,y,0): uniform local expansion, with no rotation.
+  \begin{scope}[shift={(2.60,3.0)}]
+    \node[panel title] at (0,2.70) {(a) Divergence};
+    \node[field label] at (0,2.25) {$\mathbf F=(x,y,0)$};
+
+    \begin{scope}[x=2cm,y=2cm]
+      % Centred arrows, with length proportional to |F| (scale 1/2.8).
+      \foreach \dcX in {-0.82,-0.41,0,0.41,0.82}{
+        \foreach \dcY in {-0.82,-0.41,0,0.41,0.82}{
+          \pgfmathtruncatemacro{\dcNonzero}{abs(\dcX)+abs(\dcY)>0}
+          \ifnum\dcNonzero=1\relax
+            \draw[field arrow]
+              ({\dcX-\dcX/5.6},{\dcY-\dcY/5.6}) --
+              ({\dcX+\dcX/5.6},{\dcY+\dcY/5.6});
+          \fi
+        }
+      }
+      \draw[initial element]
+        (-\dcHalfSize,-\dcHalfSize) rectangle (\dcHalfSize,\dcHalfSize);
+      \draw[final element]
+        (-\dcExpandedHalfSize,-\dcExpandedHalfSize)
+        rectangle (\dcExpandedHalfSize,\dcExpandedHalfSize);
+      \fill[black] (0,0) circle[radius=0.8pt];
+    \end{scope}
+
+    \node[result label] at (0,-2.35) {$\nabla\!\cdot\!\mathbf F=2$};
+    \node[result label] at (0,-2.75) {$\nabla\!\times\!\mathbf F=\mathbf 0$};
+  \end{scope}
+
+  % (b) F=(-y,x,0): anticlockwise rigid rotation, preserving area.
+  \begin{scope}[shift={(8.92,3.0)}]
+    \node[panel title] at (0,2.70) {(b) Curl};
+    \node[field label] at (0,2.25) {$\mathbf F=(-y,x,0)$};
+
+    \begin{scope}[x=2cm,y=2cm]
+      \foreach \dcX in {-0.82,-0.41,0,0.41,0.82}{
+        \foreach \dcY in {-0.82,-0.41,0,0.41,0.82}{
+          \pgfmathtruncatemacro{\dcNonzero}{abs(\dcX)+abs(\dcY)>0}
+          \ifnum\dcNonzero=1\relax
+            \draw[field arrow]
+              ({\dcX+\dcY/5.6},{\dcY-\dcX/5.6}) --
+              ({\dcX-\dcY/5.6},{\dcY+\dcX/5.6});
+          \fi
+        }
+      }
+      \draw[initial element]
+        (-\dcHalfSize,-\dcHalfSize) rectangle (\dcHalfSize,\dcHalfSize);
+      \begin{scope}[rotate=\dcRotationAngle]
+        \draw[final element]
+          (-\dcHalfSize,-\dcHalfSize) rectangle (\dcHalfSize,\dcHalfSize);
+      \end{scope}
+      \fill[black] (0,0) circle[radius=0.8pt];
+    \end{scope}
+
+    \node[result label] at (0,-2.35) {$\nabla\!\cdot\!\mathbf F=0$};
+    \node[result label] at (0,-2.75) {$\nabla\!\times\!\mathbf F=2\hat{\mathbf z}$};
+  \end{scope}
+\end{tikzpicture}
