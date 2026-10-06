@@ -10,7 +10,7 @@ freedom
 with \(\chi(r,t)\) an arbitrary function, never reaches an observable.
 Quantum mechanics removes this comfort.
 
-\subsection{Mathematical Interlude II: The Quantum Hamiltonian}
+\subsection{Mathematical interlude II: the quantum Hamiltonian}
 
 In classical mechanics, the motion of a particle is determined by the force
 acting on it: Newton's second law fixes the acceleration, and the
@@ -88,7 +88,7 @@ order before proceeding.
 In quantum mechanics the state of a particle is a function
 \(\psi \colon \mathbb{R}^3 \to \mathbb{C}\). At every point in space
 we have a complex number; this can be visualized as a bizarre clock. The modulus
-\(|\psi|\), the length of the hand, is the modulus of the probability amplitude:
+\(|\psi|\), the length of the hand, is not itself a probability:
 its square \(|\psi|^2\) gives the probability density of finding the particle in that precise
 spot in space; the argument tells us where the hand is pointing.
 
@@ -175,7 +175,7 @@ represents the canonical momentum, whereas
 is the kinetic momentum, related to the particle's velocity by \(\hat \pi =
 mv\). So in the presence of a vector potential:
 \[
-	p \ne mv.
+	\hat{\pi} = m\hat{v}, \qquad \hat{p} \neq \hat{\pi}.
 \]
 
 If the argument of \(\psi\) at a point is only defined relative to some
@@ -279,10 +279,12 @@ so that
 		+ qV\right]\psi .
 \]
 The terms linear in \(A\) are the ones responsible for the effects
-we are interested in; the term in \(A^2\) is not neglected here:
-\(A\) is a gauge-dependent potential, not the magnetic field, so its
-size alone does not justify dropping it, and the argument that follows
-uses the full operator \((-i\hbar\nabla - qA)^2\). If the gauge
+we are interested in. The term \(q^2A^2/2m\) is quadratic in the potential
+and in the charge, not in the field, and it is not negligible in general:
+it is responsible, for instance, for the diamagnetic response of atoms.
+Nor does the argument that follows need to drop it: the Aharonov--Bohm phase
+is derived from the full operator \((-i\hbar\nabla - qA)^2\) and is exact.
+If the gauge
 is chosen so that \(\nabla \cdot A = 0\), the two first-order
 terms collapse into a single one.
 

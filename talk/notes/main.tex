@@ -2,7 +2,7 @@
 \documentclass[a4paper,11pt]{report}
 
 % =============================================================
-%  Independent study notes base
+%  Independent technical note
 %  The Aharonov--Bohm Effect
 %  Compiler: LuaLaTeX
 % =============================================================
@@ -16,6 +16,7 @@
 \fi
 \usepackage[british]{babel}
 \usepackage{csquotes}
+\hyphenation{Elek-tro-nen-wel-len}
 
 % --- Layout ---
 \usepackage[
@@ -229,7 +230,8 @@
 }
 
 % --- Bibliography ---
-\usepackage[backend=biber]{biblatex}
+\usepackage[backend=biber, style=numeric, sorting=nyt,
+            giveninits=true, date=year, isbn=false]{biblatex}
 \addbibresource{../../references/references.bib}
 \DeclareBibliographyAlias{video}{online}
 
@@ -244,9 +246,20 @@
     \clearfield{url}%
   }{}%
 }
+\AtEveryBibitem{%
+  \clearfield{issn}\clearfield{month}\clearfield{day}%
+  \iffieldundef{doi}{}{\clearfield{url}}}
 
 % --- Hyperref / cleveref ---
 \usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle    = {The Aharonov–Bohm Effect: Gauge Potentials, Quantum Phase,
+                 and Experimental Evidence},
+  pdfauthor   = {Giancarmine Sparso},
+  pdfsubject  = {Independent technical note, DOI 10.5281/zenodo.23173179},
+  pdfkeywords = {Aharonov–Bohm effect, gauge invariance, vector potential,
+                 quantum phase, electron interferometry}
+}
 \usepackage{bookmark}
 \usepackage[english]{cleveref}
 
@@ -287,10 +300,13 @@
 \usepackage{fancyhdr}
 
 \newcommand{\notetitle}{The Aharonov--Bohm Effect}
-\newcommand{\notesubtitle}{Study Notes for the PHYS02 Scientific Talk}
-\newcommand{\course}{Independent Study Notes}
+\newcommand{\notesubtitle}{Gauge Potentials, Quantum Phase, and Experimental Evidence}
+\newcommand{\course}{Independent Technical Note}
 \newcommand{\studentname}{Giancarmine Sparso}
-\newcommand{\academicyear}{July 2026}
+\newcommand{\affiliation}{Sapienza University of Rome}
+\newcommand{\orcid}{0009-0001-2018-9491}
+\newcommand{\notedoi}{10.5281/zenodo.23173179}
+\newcommand{\academicyear}{October 2026\enspace\textperiodcentered\enspace v1.0}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -300,6 +316,16 @@
 \renewcommand{\headrulewidth}{0.4pt}
 
 % --- Opening header ---
+% Unnumbered footnote without a hyperref anchor (none is needed).
+\makeatletter
+\newcommand{\unnumberedfootnote}[1]{%
+  \begingroup
+  \protected@xdef\@thefnmark{}%
+  \H@@footnotetext{\parindent=0pt\hspace*{-1.8em}#1}% cancel the empty mark box
+  \endgroup
+}
+\makeatother
+
 \newcommand{\makenotesheader}{%
   \thispagestyle{empty}
 
@@ -325,6 +351,13 @@
     \vspace{8pt}
 
     {\small \studentname\par}
+
+    \vspace{2pt}
+
+    {\footnotesize
+      \affiliation\enspace\textperiodcentered\enspace
+      ORCID \href{https://orcid.org/\orcid}{\orcid}\par
+      DOI: \href{https://doi.org/\notedoi}{\notedoi}\par}
   \end{center}
 
   \vspace{6pt}
@@ -333,17 +366,37 @@
     \begin{minipage}{0.82\textwidth}
       \footnotesize
       \textbf{Abstract.}
-      These notes develop the conceptual and mathematical foundations of the
-      Aharonov--Bohm effect in preparation for a scientific talk. They are intended
-      as a progressively developed record of the study process, including
-      definitions, derivations, conceptual remarks, and relevant experimental
-      results.
+      This note gives a self-contained exposition of the Aharonov--Bohm effect
+      for advanced undergraduate students. Starting from the role of
+      electromagnetic potentials in classical electrodynamics, it introduces
+      gauge freedom, minimal coupling, and the gauge covariance of the
+      Schrödinger equation, and derives the Aharonov--Bohm phase for both the
+      time-dependent scalar and the magnetic configurations. It then reviews the
+      experimental evidence, culminating in the 1986 toroidal-magnet experiment
+      of Tonomura and collaborators, in which superconducting shielding confined
+      the magnetic flux completely. The note is expository and does not present
+      original research results.
+
+      \medskip
+      \noindent\textbf{Keywords:} Aharonov--Bohm effect; gauge invariance;
+      vector potential; quantum phase; electron interferometry.
     \end{minipage}
   \end{center}
 
   \vspace{5pt}
   \noindent\rule{\textwidth}{0.3pt}\par
   \vspace{2pt}
+
+  % Keep the whole table of contents on the opening page.
+  \enlargethispage{3\baselineskip}
+  \unnumberedfootnote{%
+    Originally developed from study notes prepared for the PHYS02 scientific
+    talk at Lady Margaret Hall, Oxford, July 2026. An earlier version has been
+    publicly available on GitHub since August 2026. Not peer reviewed;
+    corrections are welcome.\par
+    \textcopyright{} 2026 Giancarmine Sparso\enspace\textperiodcentered\enspace
+    Licensed under CC BY 4.0
+    (\url{https://creativecommons.org/licenses/by/4.0/}).}
 }
 
 \begin{document}
@@ -372,5 +425,13 @@
 created by the author. Some schematics are based on or inspired by
 experimental arrangements described in the cited literature; such cases are
 explicitly acknowledged in the corresponding captions.\par}
+
+\vspace{0.5\baselineskip}
+{\small
+\textbf{Use of AI tools.} AI assistants (Claude, ChatGPT) were used as study
+aids and for assistance with figure-generation code, LaTeX formatting, and
+language editing.
+All derivations and physical content were checked by the author, who takes
+full responsibility for any remaining errors.\par}
 
 \end{document}

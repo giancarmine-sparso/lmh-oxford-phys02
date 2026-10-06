@@ -1,13 +1,25 @@
 % !TeX root = ../main.tex
-The classical dismissal of the potentials rests on two claims. First,
+The classical dismissal of the potentials rests on two claims.\footnote{The
+	author's first encounter with the Aharonov--Bohm effect was the
+	popular-science video \cite{veritasiumTinyDonutThat2026}, which also offers an
+	accessible account of the toroidal experiment discussed in
+	\cref{sec:tonomura}.}
+First,
 the equations of motion contain only \(E\) and \(B\). Second, the potentials
 carry \emph{more} information than the fields, and this excess is pure gauge,
 hence unphysical. Aharonov and Bohm's starting point is to examine
 the second claim rather than accept it \cite{aharonovSignificanceElectromagneticPotentials1959}.
+The same interference shift had already been anticipated by Ehrenberg and
+Siday in the context of electron optics \cite{ehrenbergRefractiveIndexElectron1949}.
 
 
+% The opening footnote makes \needspace misjudge the free space here and
+% push the section to a new page; skip it for this heading only.
+\begingroup
+\renewcommand{\needspace}[1]{}
 \section{The loss of information}
 \label{sec:lost-information}
+\endgroup
 The relation
 \[
 	B = \nabla \times A
@@ -55,10 +67,10 @@ a gauge-invariant quantity that we have already met, the circulation
 \]
 one number for each class of non-contractible loops; two loops that wind
 around the hole the same number of times give the same integral. The
-classes are labeled by \(n \in \mathbb Z\), and the value is \(n \Phi_B\),
+classes are labelled by \(n \in \mathbb Z\), and the value is \(n \Phi_B\),
 so a single real parameter generates everything.
 
-This quantity is not attached to a point but to a loop: it is nonlocal
+This quantity is not attached to a point but to a loop: it is non-local
 by construction; and it may be nonzero on a curve along which \(B\)
 vanishes identically.
 
@@ -100,6 +112,8 @@ the phase is single-valued, and the potential has been removed by a gauge
 transformation. If the region encircles a hole the integral depends on
 the path, and the phases accumulated along two paths on opposite sides
 of the hole differ by
+\(\Delta\delta = \delta_1 - \delta_2\). Taking \(C\) along the first path
+and back along the second gives
 \[
 	\Delta \delta = \frac{q}{\hbar} \oint_C A \cdot dr = \frac{q \Phi_B}
 	{\hbar}.
@@ -190,8 +204,8 @@ is
 \]
 The interference at $F$ depends on the difference
 \[
-	\Delta\delta = \frac{S_1 - S_2}{\hbar}
-	= \frac{q}{\hbar}\int \bigl(V_1 - V_2\bigr)\, dt ,
+	\Delta\delta = \frac{S_2 - S_1}{\hbar}
+	= -\frac{q}{\hbar}\int \bigl(V_1 - V_2\bigr)\, dt ,
 \]
 which is nonzero whenever the two tubes are driven differently. The pattern is
 displaced although no force was exerted on either packet at any moment of its
@@ -199,25 +213,25 @@ history.
 
 \paragraph{The space-time reading.}
 The phase difference can be written as a circulation around the closed circuit
-formed by the two branches,
+formed by the two branches, with the same orientation,
 \[
-	\frac{q}{\hbar}\oint V\, dt ,
+	\Delta\delta = -\frac{q}{\hbar}\oint_C V\, dt ,
 \]
 closed not in space but in space-time. Relativistic covariance then demands that
 the time component cannot appear alone: the invariant object is
 \[
-	\frac{q}{\hbar}\oint \bigl(V\, dt - A \cdot dr\bigr),
+	\Delta\delta = \frac{q}{\hbar}\oint_C \bigl(A \cdot dr - V\, dt\bigr),
 \]
 integrated over any closed circuit in space-time. The arrangement of
-\cref{fig:aharonov-bohm-setup} realises the first term. The specialisation to a purely
-spatial circuit, $t = \mathrm{constant}$, leaves the second, and yields the
+\cref{fig:aharonov-bohm-setup} realises the scalar-potential term. The specialisation to a purely
+spatial circuit, $t = \mathrm{constant}$, leaves the vector-potential term, and yields the
 phase difference already obtained in \cref{sec:lost-information},
 \[
-	\Delta\delta = \frac{q}{\hbar}\oint A \cdot dr = \frac{q\Phi_B}{\hbar} .
+	\Delta\delta = \frac{q}{\hbar}\oint_C A \cdot dr = \frac{q\Phi_B}{\hbar} .
 \]
 The two arrangements are therefore one argument. In both, the electron
 worldlines bound a region of space-time through which the electromagnetic field
-has nonvanishing flux, while the field vanishes on the worldlines themselves.
+has non-vanishing flux, while the field vanishes on the worldlines themselves.
 
 
 \section{The magnetic Aharonov--Bohm arrangement}
@@ -262,9 +276,10 @@ period
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{scripts/figures/interference_before_after.pdf}
-	\caption{Single-electron accumulation before and after inserting half a flux
-		quantum, $\Phi_B=\Phi_0/2$. The resulting Aharonov--Bohm phase shift
-		$\Delta\delta=\pi$ translates the fringes by half a period without changing
+	\caption{Author-generated Monte Carlo illustration of single-electron
+		accumulation before and after inserting half a flux quantum,
+		$\Phi_B=\Phi_0/2$. The resulting Aharonov--Bohm phase shift
+		$\Delta\delta=-\pi\equiv\pi\pmod{2\pi}$ translates the fringes by half a period without changing
 		the diffraction envelope. The dashed lines mark the original maxima.}
 	\label{fig:ab-half-flux-shift}
 \end{figure}
@@ -275,13 +290,16 @@ trajectories.
 Aharonov and Bohm already observed that comparing patterns recorded with and without flux is experimentally awkward, and suggested instead varying the flux within a single exposure, so that the alteration of the fringes is recorded directly.
 
 \section{The toroidal experiment of Tonomura}
+\label{sec:tonomura}
 The prediction of a fringe shift controlled by an inaccessible flux was tested
-soon after the original paper, first by Chambers and later, with a
-biprism-and-solenoid geometry, by M\"ollenstedt and Bayh. These experiments
+soon after the original paper, first by
+Chambers~\cite{chambersShiftElectronInterference1960} and later, with a
+biprism-and-solenoid geometry, by M\"ollenstedt and
+Bayh~\cite{mllenstedtMessungKontinuierlichenPhasenschiebung1962}. These experiments
 observed the expected displacement of the interference pattern, but they were
 open to a persistent objection: no real solenoid is infinite, and a finite
 solenoid leaks a small stray field into the region crossed by the electrons.
-A skeptic could therefore attribute the observed shift not to the vector
+A sceptic could therefore attribute the observed shift not to the vector
 potential in a field-free region, but to the electrons interacting with this
 residual magnetic field along their paths.
 
@@ -290,7 +308,7 @@ The experiment that closed the loophole was performed by Tonomura and
 collaborators in 1986 \cite{tonomuraEvidenceAharonovBohmEffect1986}. The
 idea is to replace the solenoid with a geometry that has no ends from
 which the field can leak, a toroid (a ring). The sample is a microscopic
-toroidal magnet of permalloy, a few micrometers across, in which the magnetic
+toroidal magnet of permalloy, a few micrometres across, in which the magnetic
 flux circulates entirely inside the ring. An electron wave is then split so
 that one part passes through the hole of the toroid and
 the other part passes outside it. The two partial waves enclose the magnetic
@@ -320,10 +338,10 @@ superconducting flux quantum $h/2e$.\footnote{The elementary flux quantum
 	associated with a charge $q$ is $\Phi_0 = h/|q|$. In a superconductor the charge
 	carriers are Cooper pairs of charge $2e$, so the trapped flux is quantized in
 	units of $h/2e$, half the value one would associate with a single electron.}
-Setting $\Phi_B = n\,h/2e$ in the phase difference, with $q = -e$ for the
-electron, gives
+For an electron of charge $q = -e$, setting $\Phi_B = n\,h/2e$, with
+$n\in\mathbb Z$, in the phase difference gives
 \[
-	|\Delta\delta| \;=\; \frac{e}{\hbar}\,n\,\frac{h}{2e} \;=\; n\pi .
+	\Delta\delta \;=\; -\frac{e}{\hbar}\,n\,\frac{h}{2e} \;=\; -n\pi .
 \]
 The predicted relative phase between the wave through the hole and the wave
 outside is therefore, modulo $2\pi$, either $0$ (for even $n$) or $\pi$ (for odd $n$), and
@@ -345,19 +363,18 @@ inside the shielded ring.
 		\centering
 		\includegraphics[width=\linewidth]{../assets/figures/%
 			tonomura_torus_unshifted.pdf}
-		\caption{Above $T_c$: the fringes remain continuous through the
-			torus hole.}
+		\caption{Below $T_c$, even $n$: no relative phase shift.}
 		\label{fig:tonomura-torus-unshifted}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}[t]{0.48\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{../assets/figures/tonomura_torus_shifted.pdf}
-		\caption{Below $T_c$: the enclosed flux produces a phase shift
-			$\Delta\delta=\pi$.}
+		\caption{Below $T_c$, odd $n$: $\Delta\delta\equiv\pi\pmod{2\pi}$.}
 		\label{fig:tonomura-torus-shifted}
 	\end{subfigure}
-	\caption{Schematic comparison of the toroidal experiment. The fixed
+	\caption{Schematic comparison of even and odd trapped flux quanta below
+		$T_c$. The fixed
 		dashed guides mark an outside maximum: with no phase offset the same
 		maximum continues through the hole, whereas the Aharonov--Bohm phase
 		moves the interior pattern by half a fringe spacing. Author-generated
