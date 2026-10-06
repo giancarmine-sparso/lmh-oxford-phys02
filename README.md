@@ -13,7 +13,9 @@ and small simulations used to build the final visuals.
 The study notes prepared for the PHYS02 talk (Lady Margaret Hall, Oxford,
 July 2026) have been revised and published as an independent technical note on
 Zenodo. The archived version is available at
-[doi:10.5281/zenodo.23173179](https://doi.org/10.5281/zenodo.23173179).
+[doi:10.5281/zenodo.23173179](https://doi.org/10.5281/zenodo.23173179);
+a copy of the PDF is included in
+[talk/notes](talk/notes/Sparso_2026_Aharonov-Bohm-Effect_v1.0.pdf).
 
 ## Projects
 

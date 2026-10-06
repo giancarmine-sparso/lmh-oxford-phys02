@@ -53,6 +53,7 @@ target/
 *.toc
 *-SAVE-ERROR
 /talk/notes/*.pdf
+!/talk/notes/Sparso_2026_Aharonov-Bohm-Effect_v1.0.pdf
 /poster/graphics/build/
 
 # Project outputs and local datasets
