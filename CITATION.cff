@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this material, please cite the technical note below."
+title: "The Aharonov–Bohm Effect: Gauge Potentials, Quantum Phase, and Experimental Evidence"
+authors:
+  - family-names: Sparso
+    given-names: Giancarmine
+    orcid: "https://orcid.org/0009-0001-2018-9491"
+    affiliation: "Sapienza University of Rome"
+version: "1.0"
+date-released: 2026-10-06
+doi: 10.5281/zenodo.23173178
+license: CC-BY-4.0
+repository-code: "https://github.com/giancarmine-sparso/lmh-oxford-phys02"
+keywords:
+  - Aharonov–Bohm effect
+  - gauge invariance
+  - vector potential
+  - quantum phase
+  - electron interferometry
+preferred-citation:
+  type: report
+  title: "The Aharonov–Bohm Effect: Gauge Potentials, Quantum Phase, and Experimental Evidence"
+  authors:
+    - family-names: Sparso
+      given-names: Giancarmine
+      orcid: "https://orcid.org/0009-0001-2018-9491"
+  year: 2026
+  publisher:
+    name: Zenodo
+  doi: 10.5281/zenodo.23173179
+  url: "https://doi.org/10.5281/zenodo.23173179"
+  notes: "Independent technical note, Version 1.0"

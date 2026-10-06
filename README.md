@@ -1,10 +1,19 @@
 # LMH Oxford PHYS02 — talk, poster and supporting analysis
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23173178.svg)](https://doi.org/10.5281/zenodo.23173178)
+
 This repository brings together two physics communication projects developed
 for the LMH Oxford Summer Programme 2026: an interactive talk on the
 Aharonov–Bohm effect and an A1 poster on recovering the $W \to e\nu$ signature
 from ATLAS Open Data. The presentation sources are accompanied by the analysis
 and small simulations used to build the final visuals.
+
+## Technical note
+
+The study notes prepared for the PHYS02 talk (Lady Margaret Hall, Oxford,
+July 2026) have been revised and published as an independent technical note on
+Zenodo. The archived version is available at
+[doi:10.5281/zenodo.23173179](https://doi.org/10.5281/zenodo.23173179).
 
 ## Projects
 
@@ -56,6 +65,25 @@ This is an independent student project. It is not an official publication of,
 or an endorsement by, ATLAS, CERN, the University of Oxford or Lady Margaret
 Hall.
 
+## How to cite
+
+Sparso, G. (2026). The Aharonov–Bohm Effect: Gauge Potentials, Quantum Phase,
+and Experimental Evidence (Version 1.0). Zenodo.
+https://doi.org/10.5281/zenodo.23173179
+
+```bibtex
+@misc{sparso2026aharonovbohm,
+  author    = {Sparso, Giancarmine},
+  title     = {The Aharonov--Bohm Effect: Gauge Potentials, Quantum Phase, and Experimental Evidence},
+  year      = {2026},
+  publisher = {Zenodo},
+  version   = {1.0},
+  doi       = {10.5281/zenodo.23173179},
+  url       = {https://doi.org/10.5281/zenodo.23173179},
+  note      = {Independent technical note}
+}
+```
+
 ## Licences and credits
 
 Source code is available under the [MIT License](LICENSE). Original prose,
@@ -63,6 +91,8 @@ slides, poster design and figures are available under
 [CC BY 4.0](LICENSE-CONTENT.md). Logos, photographs, ATLAS material and other
 external assets retain their original terms; see
 [Third-party notices](THIRD_PARTY_NOTICES.md).
+
+The Zenodo technical note is released under CC BY 4.0.
 
 [talk-preview]: assets/previews/talk.png
 [poster-preview]: assets/previews/poster.png
